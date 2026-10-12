@@ -153,18 +153,21 @@ function initMenu() {
   const close = () => {
     if (!menu.classList.contains("is-open") || closing) return;
     closing = true;
-    // 1) links and info slide out, 2) the circle shrinks back, 3) the X morphs back into lines
+    // 1) links and info glide up and fade, 2) the circle shrinks back (links stay hidden meanwhile),
+    // 3) the X morphs back into lines, 4) reset link positions once the panel is fully hidden
+    const LINKS_OUT = 520, PANEL_SHRINK = 900;
     menu.classList.add("is-closing");
     setTimeout(() => {
-      menu.classList.remove("is-open", "is-closing");
+      menu.classList.remove("is-open");
       menu.setAttribute("aria-hidden", "true");
       document.body.classList.remove("no-scroll");
       window.__lenis?.start();
-    }, 420);
+    }, LINKS_OUT);
+    setTimeout(() => burgers.forEach((b) => b.classList.remove("is-open")), LINKS_OUT + 500);
     setTimeout(() => {
-      burgers.forEach((b) => b.classList.remove("is-open"));
+      menu.classList.remove("is-closing");
       closing = false;
-    }, 420 + 700);
+    }, LINKS_OUT + PANEL_SHRINK);
   };
   $$("[data-menu-open]").forEach((b) => b.addEventListener("click", open));
   $$("[data-menu-close]").forEach((b) => b.addEventListener("click", close));

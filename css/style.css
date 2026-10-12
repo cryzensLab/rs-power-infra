@@ -1193,20 +1193,6 @@ main { overflow-x: clip; }
   .planner-hero__copy p { font-size: 1.08rem; }
 }
 
-/* ---------- Menu closing animation ---------- */
-.menu.is-closing .menu__links a { transform: translateY(-110%); transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1); }
-.menu.is-closing .menu__links li:nth-child(1) a { transition-delay: 0s; }
-.menu.is-closing .menu__links li:nth-child(2) a { transition-delay: 0.05s; }
-.menu.is-closing .menu__links li:nth-child(3) a { transition-delay: 0.1s; }
-.menu.is-closing .menu__info { opacity: 0; transform: translateY(-16px); transition: opacity 0.3s, transform 0.35s; transition-delay: 0s; }
-.menu.is-closing .menu__close .i { transform: rotate(180deg) scale(0.6); }
-.menu__close .i { transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
-.menu.is-closing .menu__close { opacity: 0; transition: opacity 0.3s 0.1s; }
-@media (prefers-reduced-motion: reduce) {
-  .menu.is-closing .menu__links a { transition-duration: 0.4s !important; }
-  .menu.is-closing .menu__info, .menu__close .i, .menu.is-closing .menu__close { transition-duration: 0.35s !important; }
-}
-
 /* ---------- Product range: real Waaree images ---------- */
 .pr-card__media img { width: 86%; height: 86%; object-fit: contain; filter: drop-shadow(0 18px 22px rgba(15, 34, 48, 0.18)); }
 .pr-card--feature .pr-card__media img { position: relative; width: 88%; height: 92%; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5)); }
@@ -1226,4 +1212,31 @@ main { overflow-x: clip; }
   background: linear-gradient(100deg, #ffd768 0%, #f5b820 60%, #ffc93c 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   text-shadow: none;
+}
+
+/* ---------- Menu closing animation (smooth) ---------- */
+/* keep the panel visible while its circle shrinks, then hide it */
+.menu { transition: clip-path 0.9s cubic-bezier(0.76, 0, 0.24, 1), visibility 0s linear 0.9s; }
+.menu.is-open { transition: clip-path 0.9s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+/* links glide up through their mask and fade, last link first for a gentle cascade */
+.menu.is-closing .menu__links a {
+  transform: translateY(-105%); opacity: 0;
+  transition: transform 0.55s cubic-bezier(0.55, 0, 0.45, 1), opacity 0.45s ease, color 0.3s;
+}
+.menu.is-closing .menu__links li:nth-child(3) a { transition-delay: 0s; }
+.menu.is-closing .menu__links li:nth-child(2) a { transition-delay: 0.06s; }
+.menu.is-closing .menu__links li:nth-child(1) a { transition-delay: 0.12s; }
+.menu.is-closing .menu__info { opacity: 0; transform: translateY(-14px); transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.55, 0, 0.45, 1); transition-delay: 0s; }
+.menu__close .i { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.menu.is-closing .menu__close .i { transform: rotate(180deg) scale(0.6); }
+.menu.is-closing .menu__close { opacity: 0; transition: opacity 0.35s ease 0.1s; }
+/* after the panel is hidden, snap links back to their start position without animating */
+.menu:not(.is-open):not(.is-closing) .menu__links a { transition: none; opacity: 1; }
+.menu__links a { transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s, opacity 0.4s; }
+@media (prefers-reduced-motion: reduce) {
+  .menu.is-closing .menu__links a { transition-duration: 0.55s, 0.45s, 0.3s !important; }
+  .menu.is-closing .menu__info { transition-duration: 0.4s, 0.5s !important; }
+  .menu__close .i, .menu.is-closing .menu__close { transition-duration: 0.4s !important; }
+  .menu { transition-duration: 0.9s, 0s !important; }
+  .menu:not(.is-open):not(.is-closing) .menu__links a { transition: none !important; }
 }
