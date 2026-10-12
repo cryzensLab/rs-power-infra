@@ -1219,3 +1219,11 @@ main { overflow-x: clip; }
 }
 .inverter__media { display: grid; place-items: center; border-radius: var(--radius-lg); background: radial-gradient(circle at 50% 55%, #ffffff 0%, #e3eef0 70%); }
 .inverter__media img { width: 80%; height: 80%; object-fit: contain; filter: drop-shadow(0 30px 40px rgba(15, 34, 48, 0.22)); }
+
+/* Hero: highlight the bold phrases in solar yellow */
+.hero__tagline strong {
+  color: #ffc93c;
+  background: linear-gradient(100deg, #ffd768 0%, #f5b820 60%, #ffc93c 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
