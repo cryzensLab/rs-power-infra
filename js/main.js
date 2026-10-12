@@ -149,12 +149,22 @@ function initMenu() {
       window.__lenis?.stop();
     }, 280);
   };
+  let closing = false;
   const close = () => {
-    setTimeout(() => burgers.forEach((b) => b.classList.remove("is-open")), 400);
-    menu.classList.remove("is-open");
-    menu.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("no-scroll");
-    window.__lenis?.start();
+    if (!menu.classList.contains("is-open") || closing) return;
+    closing = true;
+    // 1) links and info slide out, 2) the circle shrinks back, 3) the X morphs back into lines
+    menu.classList.add("is-closing");
+    setTimeout(() => {
+      menu.classList.remove("is-open", "is-closing");
+      menu.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+      window.__lenis?.start();
+    }, 420);
+    setTimeout(() => {
+      burgers.forEach((b) => b.classList.remove("is-open"));
+      closing = false;
+    }, 420 + 700);
   };
   $$("[data-menu-open]").forEach((b) => b.addEventListener("click", open));
   $$("[data-menu-close]").forEach((b) => b.addEventListener("click", close));

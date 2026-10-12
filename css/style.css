@@ -355,7 +355,6 @@ svg.loader__sun { width: 64px; height: 64px; color: var(--sun); animation: spin 
 }
 .planner-hero .container { position: relative; z-index: 1; }
 .planner-hero__top { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding-top: clamp(56px, 8vw, 100px); }
-.planner-hero__top .eyebrow { align-self: start; color: var(--ink); }
 .planner-hero__copy h2 { font-size: clamp(2.2rem, 4.6vw, 3.8rem); margin-bottom: 16px; }
 .planner-hero__copy p { color: #2a3b46; max-width: 46ch; }
 .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding-block: 40px 30px; }
@@ -772,7 +771,6 @@ svg.loader__sun { width: 64px; height: 64px; color: var(--sun); animation: spin 
   -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
   box-shadow: 0 20px 50px -25px rgba(15, 34, 48, 0.35);
 }
-.planner-hero__top .eyebrow { padding: 8px 14px; border-radius: 999px; background: rgba(255, 255, 255, 0.8); width: fit-content; }
 .stat__num small { font-size: 0.45em; margin-left: 6px; letter-spacing: 0; color: rgba(255, 255, 255, 0.85); }
 .stat__num { white-space: nowrap; }
 @media (min-width: 761px) { .footer__bottom .container { padding-right: 110px; } }
@@ -955,7 +953,6 @@ main { overflow-x: clip; }
 /* ---------- Ticker (infinite, right to left) ---------- */
 .marquee { overflow: hidden; padding-block: 16px; background: var(--teal-deep); color: #fff; }
 .marquee__track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
-.marquee:hover .marquee__track { animation-play-state: paused; }
 .marquee__group { display: flex; flex-shrink: 0; }
 .marquee__group span {
   display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;
@@ -1175,3 +1172,37 @@ main { overflow-x: clip; }
   .menu__links a, .menu__info { transition-duration: 0.8s !important; }
 }
 @media (max-width: 760px) { .menu-btn__label { display: none; } }
+
+/* ---------- Wider sections on large screens ---------- */
+@media (min-width: 1440px) { .container { max-width: 1480px; padding-inline: 48px; } }
+@media (min-width: 1800px) { .container { max-width: 1660px; padding-inline: 56px; } }
+
+/* ---------- Ticker: 4 identical groups so the loop never shows a gap, never pauses ---------- */
+.marquee__track { animation: marquee 64s linear infinite; animation-play-state: running !important; }
+@media (max-width: 760px) { .marquee__track { animation-duration: 44s; } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation-duration: 80s !important; } }
+
+/* ---------- Planner: copy card on the right, larger feature points ---------- */
+@media (min-width: 961px) { .planner-hero__copy { grid-column: 2; } }
+@media (min-width: 1200px) {
+  .features { gap: 36px; padding-block: 48px 40px; }
+  .feature__icon { width: 56px; height: 56px; border-radius: 14px; margin-bottom: 18px; }
+  .feature__icon .i { width: 26px; height: 26px; }
+  .feature h3 { font-size: 1.22rem; margin-bottom: 8px; }
+  .feature p { font-size: 0.98rem; line-height: 1.55; }
+  .planner-hero__copy p { font-size: 1.08rem; }
+}
+
+/* ---------- Menu closing animation ---------- */
+.menu.is-closing .menu__links a { transform: translateY(-110%); transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1); }
+.menu.is-closing .menu__links li:nth-child(1) a { transition-delay: 0s; }
+.menu.is-closing .menu__links li:nth-child(2) a { transition-delay: 0.05s; }
+.menu.is-closing .menu__links li:nth-child(3) a { transition-delay: 0.1s; }
+.menu.is-closing .menu__info { opacity: 0; transform: translateY(-16px); transition: opacity 0.3s, transform 0.35s; transition-delay: 0s; }
+.menu.is-closing .menu__close .i { transform: rotate(180deg) scale(0.6); }
+.menu__close .i { transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.menu.is-closing .menu__close { opacity: 0; transition: opacity 0.3s 0.1s; }
+@media (prefers-reduced-motion: reduce) {
+  .menu.is-closing .menu__links a { transition-duration: 0.4s !important; }
+  .menu.is-closing .menu__info, .menu__close .i, .menu.is-closing .menu__close { transition-duration: 0.35s !important; }
+}
