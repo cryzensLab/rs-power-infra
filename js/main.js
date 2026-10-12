@@ -138,13 +138,19 @@ function initHeader() {
 function initMenu() {
   const menu = $(".menu");
   if (!menu) return;
+  const burgers = $$("[data-menu-open]");
   const open = () => {
-    menu.classList.add("is-open");
-    menu.setAttribute("aria-hidden", "false");
-    document.body.classList.add("no-scroll");
-    window.__lenis?.stop();
+    // morph the hamburger into an X, then reveal the menu
+    burgers.forEach((b) => b.classList.add("is-open"));
+    setTimeout(() => {
+      menu.classList.add("is-open");
+      menu.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+      window.__lenis?.stop();
+    }, 280);
   };
   const close = () => {
+    setTimeout(() => burgers.forEach((b) => b.classList.remove("is-open")), 400);
     menu.classList.remove("is-open");
     menu.setAttribute("aria-hidden", "true");
     document.body.classList.remove("no-scroll");

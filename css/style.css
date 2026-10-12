@@ -1110,3 +1110,68 @@ main { overflow-x: clip; }
 /* header spans the same width as the hero content */
 .header > .container { max-width: none; }
 @media (min-width: 761px) { .header > .container { padding-inline: clamp(24px, 3.5vw, 56px); } }
+
+/* ---------- Hero text: larger copy, softer title ---------- */
+.hero__title { color: rgba(255, 255, 255, 0.72); }
+.hero__tagline { font-size: clamp(1.7rem, 3.3vw, 2.9rem); line-height: 1.2; }
+.hero__top > .hero__tagline { max-width: 24ch; }
+.hero__tagline strong { font-weight: 700; color: #fff; }
+.hero__tagline span { font-weight: 400; color: rgba(255, 255, 255, 0.92); }
+.hero__actions { gap: 16px; }
+.hero__actions .btn { padding: 17px 32px; font-size: 1.02rem; }
+
+/* ---------- Buttons: smooth hover, shine and press ---------- */
+.btn {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1), color 0.4s, border-color 0.4s, background-color 0.4s;
+  will-change: transform;
+}
+.btn::after { transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1); }
+.btn::before {
+  content: ""; position: absolute; top: 0; left: -75%; z-index: 1; width: 50%; height: 100%; pointer-events: none;
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-20deg);
+}
+.btn:hover::before { animation: btnShine 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes btnShine { from { left: -75%; } to { left: 130%; } }
+.btn:not(.magnetic):hover { transform: translateY(-3px); }
+.btn:hover { box-shadow: 0 18px 36px -14px rgba(20, 82, 119, 0.6); }
+.btn:active { transform: scale(0.96) !important; transition-duration: 0.15s; }
+.btn .i { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.btn:hover .i { transform: translateX(5px); }
+.btn--ghost { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.08); }
+.btn--ghost:hover { border-color: #fff; }
+.magnetic { transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s, color 0.4s; }
+
+/* ---------- Hamburger menu animation ---------- */
+.menu-btn__lines { display: block; position: relative; width: 26px; height: 14px; }
+.menu-btn__lines span {
+  position: absolute; left: 0; height: 2px; width: 100%; border-radius: 2px; background: currentColor;
+  transform-origin: center;
+  transition: top 0.45s cubic-bezier(0.22, 1, 0.36, 1), width 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s;
+  animation: burgerIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.menu-btn__lines span:nth-child(1) { top: 0; width: 100%; animation-delay: 0.9s; }
+.menu-btn__lines span:nth-child(2) { top: 6px; width: 62%; animation-delay: 1s; }
+.menu-btn__lines span:nth-child(3) { top: 12px; width: 82%; animation-delay: 1.1s; }
+@keyframes burgerIn { from { transform: scaleX(0); transform-origin: left; opacity: 0; } }
+/* hover: lines ripple to different lengths */
+.menu-btn:hover .menu-btn__lines span:nth-child(1) { width: 55%; transition-delay: 0s; }
+.menu-btn:hover .menu-btn__lines span:nth-child(2) { width: 100%; transition-delay: 0.06s; }
+.menu-btn:hover .menu-btn__lines span:nth-child(3) { width: 40%; transition-delay: 0.12s; }
+/* open: morph into an X */
+.menu-btn.is-open .menu-btn__lines span:nth-child(1) { top: 6px; width: 100%; transform: rotate(45deg); }
+.menu-btn.is-open .menu-btn__lines span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+.menu-btn.is-open .menu-btn__lines span:nth-child(3) { top: 6px; width: 100%; transform: rotate(-45deg); }
+.menu-btn__label { display: inline-block; transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), letter-spacing 0.45s; }
+.menu-btn:hover .menu-btn__label { transform: translateX(3px); letter-spacing: 0.04em; }
+
+/* Owner asked for these interactions, so keep them even with reduced motion on */
+@media (prefers-reduced-motion: reduce) {
+  .btn, .btn::after, .btn .i, .magnetic { transition-duration: 0.5s !important; }
+  .btn:hover::before { animation-duration: 0.9s !important; }
+  .menu-btn__lines span, .menu-btn__label { transition-duration: 0.45s !important; }
+  .menu-btn__lines span { animation-duration: 0.8s !important; }
+  .menu { transition-duration: 0.9s !important; }
+  .menu__links a, .menu__info { transition-duration: 0.8s !important; }
+}
+@media (max-width: 760px) { .menu-btn__label { display: none; } }
