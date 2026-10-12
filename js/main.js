@@ -509,8 +509,7 @@ function initAnimations() {
     // fromTo with explicit end values so a re-init (e.g. ScrollTrigger refresh) can't lock elements hidden
     tl.fromTo(".header", { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, clearProps: "transform,opacity,visibility" })
       .fromTo($$(".ci, .wi", $("[data-hero-title]", hero) || hero).slice(0, 80), { yPercent: 115 }, { yPercent: 0, duration: 1.2, stagger: 0.035 }, 0.1)
-      .fromTo($$("[data-hero-fade]", hero), { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.12 }, 0.4)
-      .fromTo($$(".hero__sun", hero), { scale: 0, rotate: -120 }, { scale: 1, rotate: 0, duration: 1.2, ease: "back.out(1.6)" }, 0.5);
+      .fromTo($$("[data-hero-fade]", hero), { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.12 }, 0.4);
     // single-image heroes get a GSAP zoom-in; the home slideshow zooms via CSS
     const still = $(".hero__bg img:not(.hero__slide)", hero);
     if (still) tl.fromTo(still, { scale: 1.25 }, { scale: 1, duration: 2.2, ease: "power3.out" }, 0);
