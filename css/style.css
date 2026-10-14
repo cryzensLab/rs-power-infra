@@ -1241,44 +1241,60 @@ main { overflow-x: clip; }
   .menu:not(.is-open):not(.is-closing) .menu__links a { transition: none !important; }
 }
 
-/* ---------- Hero trust card: Authorised Waaree dealer ---------- */
-.hero__top { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 40px; row-gap: 28px; align-items: end; }
-.hero__top > .hero__tagline, .hero__top > .hero__actions { grid-column: 1; }
-.hero__trust {
-  grid-column: 2; grid-row: 1 / span 2; align-self: end; max-width: 360px !important;
-  display: grid; grid-template-columns: auto 1fr; gap: 14px 16px; align-items: center;
-  padding: 20px 22px; border-radius: 22px; color: #fff;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  -webkit-backdrop-filter: blur(16px) saturate(140%); backdrop-filter: blur(16px) saturate(140%);
-  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.6);
-}
-.hero__trust-icon {
-  display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px;
-  background: linear-gradient(135deg, var(--green), #2f7d2d); color: #fff;
-  box-shadow: 0 0 0 6px rgba(74, 158, 72, 0.2); animation: trustPulse 3s ease-in-out infinite;
-}
-.hero__trust-icon .i { width: 26px; height: 26px; }
-@keyframes trustPulse { 50% { box-shadow: 0 0 0 11px rgba(74, 158, 72, 0.08); } }
-.hero__trust-text small { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--aqua); }
-.hero__trust-text b { display: block; font-family: var(--font-head); font-size: 1.45rem; font-weight: 600; line-height: 1.15; }
-.hero__trust-text span { display: block; font-size: 0.85rem; color: rgba(255, 255, 255, 0.82); margin-top: 2px; }
-.hero__trust-stats {
-  grid-column: 1 / -1; list-style: none; display: flex; gap: 8px; padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16); font-size: 0.8rem; color: rgba(255, 255, 255, 0.78);
-}
-.hero__trust-stats li { flex: 1; padding: 8px 10px; border-radius: 10px; background: rgba(0, 0, 0, 0.18); text-align: center; }
-.hero__trust-stats b { color: #fff; font-weight: 700; }
+/* ---------- Hero layout v2: centred copy, one highlight, faint wordmark ---------- */
+.hero { justify-content: center; padding-top: clamp(110px, 14vh, 150px); padding-bottom: clamp(90px, 14vh, 150px); }
+.hero__top { display: flex; flex-direction: column; align-items: flex-start; gap: 0; max-width: none; }
+.hero__top > * { max-width: 680px; }
 
-/* tablets/phones: compact strip under the buttons */
-@media (max-width: 960px) {
-  .hero__top { grid-template-columns: 1fr; }
-  .hero__trust { grid-column: 1; grid-row: auto; max-width: 100% !important; padding: 12px 14px; gap: 10px 12px; border-radius: 16px; }
-  .hero__trust-icon { width: 40px; height: 40px; border-radius: 12px; }
-  .hero__trust-icon .i { width: 20px; height: 20px; }
-  .hero__trust-text b { font-size: 1.1rem; }
-  .hero__trust-text span { font-size: 0.78rem; }
-  .hero__trust-stats { display: none; }
+/* dealer pill */
+.hero__badge {
+  display: inline-flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 22px;
+  padding: 8px 16px 8px 10px; border-radius: 999px; font-size: 0.86rem; color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.22);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
 }
-@media (max-width: 760px) { .hero__top { row-gap: 18px; } }
-@media (min-width: 761px) { .hero__dots { top: 30%; } }
+.hero__badge .i { width: 18px; height: 18px; color: #7fd57b; }
+.hero__badge b { color: #fff; font-weight: 600; }
+.hero__badge i { font-style: normal; color: rgba(255, 255, 255, 0.45); }
+
+/* headline (now the page h1) */
+.hero__tagline { font-family: var(--font-body); font-weight: 400; letter-spacing: -0.01em; font-size: clamp(2rem, 3.6vw, 3.25rem); line-height: 1.15; }
+.hero__top > .hero__tagline { max-width: 22ch; }
+.hero__tagline strong { font-weight: 700; color: #fff; background: none; -webkit-text-fill-color: currentColor; }
+.hero__tagline strong.hl {
+  color: #ffc93c;
+  background: linear-gradient(100deg, #ffd768 0%, #f5b820 60%, #ffc93c 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* subline */
+.hero__sub { margin-top: 18px; font-size: clamp(1rem, 1.25vw, 1.15rem); color: rgba(255, 255, 255, 0.78); }
+.hero__sub i { font-style: normal; margin-inline: 6px; color: rgba(255, 255, 255, 0.4); }
+
+/* one primary button + text link */
+.hero__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 30px; margin-top: 34px; }
+.hero__link {
+  position: relative; display: inline-flex; align-items: center; gap: 10px; padding-block: 6px;
+  font-weight: 600; font-size: 1.02rem; color: #fff;
+}
+.hero__link::after { content: ""; position: absolute; left: 0; right: 28px; bottom: 0; height: 1px; background: rgba(255, 255, 255, 0.5); transform-origin: left; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s; }
+.hero__link .i { transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.hero__link:hover::after { background: #fff; transform: scaleX(1.12); }
+.hero__link:hover .i { transform: translateX(6px); }
+
+
+@media (max-width: 760px) {
+  .hero { padding-top: 120px; padding-bottom: 110px; }
+  .hero__badge { font-size: 0.76rem; padding: 7px 12px 7px 9px; gap: 6px; margin-bottom: 18px; }
+  .hero__tagline { font-size: clamp(1.75rem, 7.6vw, 2.3rem); }
+  .hero__sub { font-size: 0.95rem; }
+  .hero__actions { margin-top: 26px; gap: 16px 24px; }
+  .hero__actions .btn { width: auto; }
+}
+/* headlines fit in two lines */
+.hero__top > .hero__tagline { max-width: 27ch; }
+@media (max-width: 760px) {
+  .hero__top > .hero__tagline { max-width: 100%; }
+}
+.hero__badge { flex-wrap: nowrap; white-space: nowrap; }
+.hero__badge em { font-style: normal; color: #7fd57b; }
