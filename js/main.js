@@ -80,6 +80,15 @@ const hasGsap = typeof window.gsap !== "undefined" && typeof window.ScrollTrigge
 const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 const inr = (n) => "₹" + Math.round(n).toLocaleString("en-IN");
 
+/* PM Surya Ghar central subsidy (indicative). Used by the subsidy selector and the calculator.
+   Check these against pmsuryaghar.gov.in before going live. */
+const SUBSIDY = {
+  // homes: ₹30,000/kW for the first 2 kW, ₹18,000/kW for the next 1 kW, capped at 3 kW (₹78,000)
+  home: (kw) => 30000 * Math.min(kw, 2) + 18000 * Math.min(Math.max(kw - 2, 0), 1),
+  // housing societies (common facilities): ₹18,000/kW, up to 500 kW
+  society: (kw) => 18000 * Math.min(kw, 500),
+};
+
 function toast(msg) {
   let t = $(".toast");
   if (!t) {
@@ -248,13 +257,13 @@ function initSubsidy() {
   if (!root) return;
   const out = $("[data-subsidy-out]", root);
   const bar = $("[data-subsidy-bar]", root);
-  const amounts = { 1: 30000, 2: 60000, 3: 78000 };   // home rooftop subsidy as per MNRE guidelines
-  let current = 78000;
+  const max = SUBSIDY.home(3);
+  let current = max;
   $$("[data-kw]", root).forEach((btn) =>
     btn.addEventListener("click", () => {
       $$("[data-kw]", root).forEach((b) => { b.classList.toggle("is-active", b === btn); b.setAttribute("aria-checked", b === btn); });
-      const to = amounts[btn.dataset.kw];
-      bar.style.setProperty("--w", (to / 78000) * 100 + "%");
+      const to = SUBSIDY.home(Number(btn.dataset.kw));
+      bar.style.setProperty("--w", (to / max) * 100 + "%");
       if (hasGsap && !reduceMotion) {
         const o = { v: current };
         gsap.to(o, { v: to, duration: 0.9, ease: "power3.out", onUpdate: () => (out.textContent = inr(o.v)) });
@@ -341,10 +350,11 @@ function initCalculator() {
     gsap.to(o, { v: to, duration: 1.2, ease: "power3.out", onUpdate: () => (el.textContent = fmt(o.v)) });
   };
 
-  const calc = () => {
+  // quiet: while the user is still typing, skip a too-low bill without flagging it
+  const calc = (quiet = false) => {
     const b = Math.max(0, parseFloat(bill.value) || 0);
     const field = bill.closest(".field");
-    if (b < 300) { field.classList.add("has-error"); return; }
+    if (b < 300) { if (!quiet) field.classList.add("has-error"); return; }
     field.classList.remove("has-error");
 
     const type = property.value;
@@ -355,9 +365,7 @@ function initCalculator() {
     const savings = Math.min(b * 0.9, generation * tariff);
     const perKw = kw <= 3 ? 60000 : kw <= 10 ? 55000 : 48000;
     const gross = kw * perKw;
-    let subsidy = 0;                                            // PM Surya Ghar (indicative)
-    if (type === "home") subsidy = kw >= 3 ? 78000 : kw >= 2 ? 60000 : 30000 * kw;
-    if (type === "society") subsidy = 18000 * kw;
+    const subsidy = SUBSIDY[type] ? SUBSIDY[type](kw) : 0;     // PM Surya Ghar (indicative)
     const net = Math.max(0, gross - subsidy);
     const payback = savings > 0 ? net / (savings * 12) : 0;
     const score = Math.min(99, roofScore[roof.value] + (kw >= 3 ? 2 : 0));
@@ -372,8 +380,13 @@ function initCalculator() {
     animateNum(out.co2, co2, (v) => v.toFixed(1) + " t");
   };
 
-  form.addEventListener("submit", (e) => { e.preventDefault(); calc(); });
-  [property, roof].forEach((s) => s.addEventListener("change", calc));
+  // update as the bill is typed or the slider is dragged, once input pauses
+  let liveTimer;
+  const calcLive = () => { clearTimeout(liveTimer); liveTimer = setTimeout(() => calc(true), 350); };
+
+  form.addEventListener("submit", (e) => { e.preventDefault(); clearTimeout(liveTimer); calc(); });
+  [property, roof].forEach((s) => s.addEventListener("change", () => calc()));
+  [bill, range].forEach((el) => el.addEventListener("input", calcLive));
   syncRange();
 
   // run once the section is visible
