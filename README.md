@@ -26,4 +26,4 @@ npx http-server -p 5500 -c-1
 
 The contact form has no backend yet. It validates the fields and shows a thank-you message, and once a WhatsApp number is set it also opens the enquiry in WhatsApp. To get enquiries by email, connect a service like Formspree.
 
-After editing CSS or JS on a live server, bump `?v=29` in the `<link>` and `<script>` tags so visitors get the new version.
+After editing CSS or JS on a live server, bump `?v=31` in the `<link>` and `<script>` tags so visitors get the new version.
