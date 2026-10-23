@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/logo/favicon.png" />
-  <link rel="stylesheet" href="css/style.css?v=30" />
+  <link rel="stylesheet" href="css/style.css?v=37" />
 </head>
 <body>
 
@@ -85,20 +85,23 @@
       </div>
 
       <div class="container hero__top">
-        <!-- Rotating headlines: one per hero image, changes with the slide -->
-        <p class="hero__tagline" data-hero-fade aria-live="polite">
-          <span class="is-active">Power your home &amp; business with <strong>clean, renewable energy</strong></span>
-          <span><strong>Cut your electricity bills</strong> with genuine <strong>Waaree solar</strong></span>
-          <span>Get up to <strong>₹78,000 subsidy</strong> under <strong>PM Surya Ghar Yojana</strong></span>
-        </p>
+        <!-- Dealer badge -->
+        <span class="hero__badge" data-hero-fade>
+          <svg class="i"><use href="#i-shield"/></svg>
+          <b>Authorised <em>Waaree</em> Dealer</b><i aria-hidden="true">·</i>Made in India
+        </span>
+        <!-- Rotating headlines: one per hero image, changes with the slide. .hl phrases are yellow. -->
+        <h1 class="hero__tagline" data-hero-fade aria-live="polite">
+          <span class="is-active">Power your home &amp; business with <strong class="hl">clean, renewable energy</strong></span>
+          <span><strong class="hl">Cut your electricity bills</strong> with genuine <strong>Waaree solar</strong></span>
+          <span>Get up to <strong class="hl">₹78,000</strong> <strong>subsidy</strong> under <strong>PM Surya Ghar Yojana</strong></span>
+        </h1>
+        <!-- Add your service area here, e.g. "Rooftop & ground-mount installation across West Bengal" -->
+        <p class="hero__sub" data-hero-fade>Rooftop &amp; ground-mount installation <i aria-hidden="true">·</i> PM Surya Ghar subsidy assistance</p>
         <div class="hero__actions" data-hero-fade>
           <a href="#planner" class="btn magnetic">Calculate Savings <svg class="i"><use href="#i-arrow-right"/></svg></a>
-          <a href="#products" class="btn btn--ghost magnetic">Explore Products <svg class="i"><use href="#i-arrow-up-right"/></svg></a>
+          <a href="#products" class="hero__link">Explore Products <svg class="i"><use href="#i-arrow-right"/></svg></a>
         </div>
-      </div>
-
-      <div class="container hero__bottom">
-        <h1 class="hero__title" data-split="chars" data-hero-title>RS Power &amp; Infra</h1>
       </div>
     </section>
 
@@ -556,6 +559,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=30"></script>
+  <script src="js/main.js?v=37"></script>
 </body>
 </html>
