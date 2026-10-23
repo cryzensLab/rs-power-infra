@@ -518,9 +518,16 @@ function runLoader(onDone) {
     tl.to(loader, { yPercent: -100, duration: 0.8, ease: "power4.inOut", delay: 0.1 });
     tl.add(onDone, 0.35);
   } else {
-    tl.from(".loader__sun", { scale: 0, rotate: -180, duration: 0.9, ease: "back.out(1.6)" })
-      .from(".loader__text", { yPercent: 100, autoAlpha: 0, duration: 0.7, ease: "power3.out" }, "-=0.5")
-      .to(".loader__bar span", { scaleX: 1, duration: 0.8, ease: "power2.inOut" }, "-=0.3")
+    // the logo builds itself: letters wipe in, the bolt strikes, the dot drops in last
+    tl.to(".loader__letters", { clipPath: "inset(0 0% 0 0)", duration: 0.95, ease: "power3.inOut" })
+      .fromTo(".loader__bolt", { autoAlpha: 0, scale: 0.55, transformOrigin: "80% 40%" },
+        { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(2.2)" }, "-=0.25")
+      .fromTo(".loader__bolt", { filter: "drop-shadow(0 0 0px rgba(125,220,85,0))" },
+        { filter: "drop-shadow(0 0 22px rgba(125,220,85,0.95))", duration: 0.18, yoyo: true, repeat: 1, ease: "power1.out" }, "<")
+      .fromTo(".loader__dot", { autoAlpha: 0, yPercent: -45 },
+        { autoAlpha: 1, yPercent: 0, duration: 0.7, ease: "bounce.out" }, "-=0.3")
+      .to(".loader__bar span", { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 0.2)
+      .to({}, { duration: 0.25 })
       .to(loader.children, { autoAlpha: 0, y: -20, duration: 0.4 })
       .to(loader, { yPercent: -100, duration: 0.9, ease: "power4.inOut" }, "-=0.1");
     tl.add(onDone, "-=0.55");
