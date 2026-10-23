@@ -1076,15 +1076,12 @@ main { overflow-x: clip; }
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     "f f a a"
-    "f f b c"
-    "d d e e";
+    "f f b c";
 }
 .pr-grid > :nth-child(1) { grid-area: f; }
 .pr-grid > :nth-child(2) { grid-area: a; }
 .pr-grid > :nth-child(3) { grid-area: b; }
 .pr-grid > :nth-child(4) { grid-area: c; }
-.pr-grid > :nth-child(5) { grid-area: d; }
-.pr-grid > :nth-child(6) { grid-area: e; }
 
 .pr-card {
   position: relative; display: flex; flex-direction: column; overflow: hidden;
@@ -1152,7 +1149,7 @@ main { overflow-x: clip; }
 /* tablet: two columns */
 @media (max-width: 1024px) {
   .pr__head { grid-template-columns: 1fr; }
-  .pr-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "f f" "a a" "b c" "d d" "e e"; }
+  .pr-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "f f" "a a" "b c"; }
   .pr-card--feature { display: grid; grid-template-columns: 1fr 1.1fr; gap: 20px; align-items: center; }
 }
 

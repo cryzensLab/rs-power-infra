@@ -41,7 +41,6 @@ const ICONS = {
   gauge: '<path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-6"/>',
   grid: '<rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9.3h18M3 14.6h18M9 4v16M15 4v16"/>',
   meter: '<rect x="5" y="2" width="14" height="20" rx="2"/><rect x="8" y="5" width="8" height="5"/><path d="M9 14h.01M12 14h.01M15 14h.01M9 17h.01M12 17h.01M15 17h.01"/>',
-  transformer: '<rect x="4" y="7" width="16" height="13" rx="1"/><path d="M8 7V4M16 7V4M12 7V3"/><path d="M8 11v5M12 11v5M16 11v5"/>',
   box: '<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>',
   check: '<path d="M5 12l5 5 9-10"/>',
   "check-circle": '<circle cx="12" cy="12" r="9.5"/><path d="M7.5 12l3 3 6-6"/>',
