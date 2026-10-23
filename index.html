@@ -12,15 +12,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=36" />
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png" />
+  <link rel="stylesheet" href="css/style.css?v=37" />
 </head>
 <body>
 
   <!-- Loader -->
   <div class="loader" aria-hidden="true">
     <div class="loader__inner">
-      <svg class="i loader__sun"><use href="#i-sun"/></svg>
-      <div class="loader__text">RS Power &amp; Infra</div>
+      <div class="loader__logo">
+        <img class="loader__letters" src="assets/logo/logo-letters.webp" width="1400" height="651" alt="" />
+        <img class="loader__bolt" src="assets/logo/logo-bolt.webp" width="1400" height="651" alt="" />
+        <img class="loader__dot" src="assets/logo/logo-dot.webp" width="1400" height="651" alt="" />
+      </div>
       <div class="loader__bar"><span></span></div>
     </div>
   </div>
@@ -33,9 +37,8 @@
         <span class="menu-btn__lines"><span></span><span></span><span></span></span>
         <span class="menu-btn__label">Menu</span>
       </button>
-      <!-- LOGO: replace the .logo-box span with <img src="assets/logo/logo.png" width="180" height="60" alt="RS Power and Infra"> -->
       <a href="index.html" class="logo-slot" aria-label="RS Power and Infra home">
-        <span class="logo-box">LOGO<small>180 × 60</small></span>
+        <img class="logo-img" src="assets/logo/logo.png" width="1000" height="465" alt="RS Power and Infra" />
       </a>
       <div class="header__cta">
         <a href="contact.html" class="btn btn--sun magnetic">Contact Us <svg class="i"><use href="#i-arrow-right"/></svg></a>
@@ -48,7 +51,7 @@
     <div class="container">
       <div class="menu__top">
         <button class="menu__close" data-menu-close><svg class="i"><use href="#i-close"/></svg> Close</button>
-        <a href="index.html" class="logo-slot"><span class="logo-box">LOGO<small>180 × 60</small></span></a>
+        <a href="index.html" class="logo-slot"><img class="logo-img" src="assets/logo/logo.png" width="1000" height="465" alt="RS Power and Infra" /></a>
       </div>
       <div class="menu__body">
         <ul class="menu__links">
@@ -518,7 +521,7 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
-        <a href="index.html" class="logo-slot"><span class="logo-box">LOGO<small>180 × 60</small></span></a>
+        <a href="index.html" class="logo-slot"><img class="logo-img" src="assets/logo/logo.png" width="1000" height="465" alt="RS Power and Infra" /></a>
         <p>Powering a sustainable future with clean solar energy. Authorised Waaree franchise offering professional installation, premium equipment and dependable service for residential and commercial clients.</p>
         <div class="footer__contact">
           <a href="tel:+910000000000"><svg class="i"><use href="#i-phone"/></svg> +91 00000 00000</a>
@@ -556,6 +559,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=36"></script>
+  <script src="js/main.js?v=37"></script>
 </body>
 </html>
