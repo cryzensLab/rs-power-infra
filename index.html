@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/logo/favicon.png" />
-  <link rel="stylesheet" href="css/style.css?v=39" />
+  <link rel="stylesheet" href="css/style.css?v=40" />
 </head>
 <body>
 
@@ -157,7 +157,7 @@
             <ul class="division__list">
               <li><span class="division__icon"><svg class="i"><use href="#i-building"/></svg></span><b>Smart Building Solutions</b></li>
               <li><span class="division__icon"><svg class="i"><use href="#i-sun"/></svg></span><b><a href="#products">Renewable Energy – Solar</a></b></li>
-              <li><span class="division__icon"><svg class="i"><use href="#i-gear"/></svg></span><b>Electrical Control Panel Manufacturing – Installation &amp; Commissioning</b></li>
+              <li><span class="division__icon"><svg class="i"><use href="#i-gear"/></svg></span><b><a href="#control-panels">Electrical Control Panel Manufacturing – Installation &amp; Commissioning</a></b></li>
             </ul>
             <a href="contact.html" class="division__link">Enquire about electrical &amp; energy <svg class="i"><use href="#i-arrow-right"/></svg></a>
           </article>
@@ -391,23 +391,68 @@
       </div>
     </div>
 
-    <!-- 4c. POWERED BY WAAREE -->
-    <section class="section stats-band">
-      <div class="container">
-        <div class="stats-band__head">
-          <div>
-            <span class="eyebrow eyebrow--light" data-reveal>Powered by Waaree</span>
-            <h2 class="h-lg" data-split="words">Made in India, admired by the world</h2>
-          </div>
-          <p data-reveal>As an authorised franchise, we bring you products from one of India's largest vertically integrated solar manufacturers, with global-standard quality and warranties you can trust.</p>
+    <!-- 4c. CONTROL PANEL MANUFACTURING -->
+    <section class="section stats-band" id="control-panels">
+      <div class="container cp">
+        <div class="cp__copy">
+          <span class="eyebrow eyebrow--light" data-reveal>Control panel manufacturing</span>
+          <h2 class="h-lg" data-split="words">We build control panels</h2>
+          <p data-reveal>We manufacture electrical control panels and take them through installation and commissioning, so one team is accountable from build to switch-on.</p>
+          <ul class="cp__list" data-stagger>
+            <li><svg class="i"><use href="#i-check-circle"/></svg><div><b>Manufacturing</b><span>Panels built around your project’s technical requirements and budget.</span></div></li>
+            <li><svg class="i"><use href="#i-check-circle"/></svg><div><b>Installation</b><span>Fitted on site by our own team.</span></div></li>
+            <li><svg class="i"><use href="#i-check-circle"/></svg><div><b>Commissioning</b><span>Brought into service and handed over ready to run.</span></div></li>
+            <li><svg class="i"><use href="#i-check-circle"/></svg><div><b>Where they fit</b><span>Buildings, industrial plants and solar installations.</span></div></li>
+          </ul>
+          <div data-reveal><a href="contact.html" class="btn btn--sun magnetic">Enquire about control panels <svg class="i"><use href="#i-arrow-right"/></svg></a></div>
         </div>
-        <div class="stats" data-stagger>
-          <div class="stat"><div class="stat__num"><span data-count="22.3" data-decimals="1">22.3</span><small>GW</small></div><p class="stat__label">Solar module manufacturing globally</p></div>
-          <div class="stat"><div class="stat__num"><span data-count="5.4" data-decimals="1">5.4</span><small>GW</small></div><p class="stat__label">Solar cell manufacturing</p></div>
-          <div class="stat"><div class="stat__num"><span data-count="20">20</span><small>GWh</small><sup>*</sup></div><p class="stat__label">Battery manufacturing</p></div>
-          <div class="stat"><div class="stat__num"><span data-count="4">4</span><small>GW</small><sup>*</sup></div><p class="stat__label">Inverter manufacturing</p></div>
+        <div class="cp__visual" data-reveal>
+          <svg class="cp__panel" viewBox="0 0 440 560" role="img" aria-label="Illustration of an electrical control panel with meters, indicator lamps, a display and circuit breakers">
+            <defs>
+              <linearGradient id="cpBody" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#27465a"/><stop offset="1" stop-color="#0f2230"/></linearGradient>
+              <linearGradient id="cpDoor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f566e"/><stop offset="1" stop-color="#173244"/></linearGradient>
+              <linearGradient id="cpScreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1a24"/><stop offset="1" stop-color="#0d2b3a"/></linearGradient>
+            </defs>
+            <rect x="20" y="10" width="400" height="540" rx="20" fill="url(#cpBody)" stroke="#6fa3b8" stroke-opacity=".35" stroke-width="2"/>
+            <rect x="38" y="28" width="364" height="504" rx="12" fill="url(#cpDoor)" stroke="#000" stroke-opacity=".25"/>
+            <!-- door handle -->
+            <rect x="372" y="290" width="14" height="70" rx="7" fill="#9fb8c4"/><rect x="376" y="302" width="6" height="46" rx="3" fill="#5b7684"/>
+            <!-- three meters -->
+            <g stroke="#cfe3ea" stroke-width="2" fill="#f4fafb">
+              <circle cx="104" cy="96" r="38"/><circle cx="220" cy="96" r="38"/><circle cx="336" cy="96" r="38"/>
+            </g>
+            <g fill="none" stroke="#9db4be" stroke-width="2" stroke-linecap="round">
+              <path d="M78 112a30 30 0 0 1 52 0"/><path d="M194 112a30 30 0 0 1 52 0"/><path d="M310 112a30 30 0 0 1 52 0"/>
+            </g>
+            <g stroke="#e0412f" stroke-width="3" stroke-linecap="round">
+              <line class="cp__needle" x1="104" y1="96" x2="104" y2="68"/><line class="cp__needle cp__needle--b" x1="220" y1="96" x2="220" y2="68"/><line class="cp__needle cp__needle--c" x1="336" y1="96" x2="336" y2="68"/>
+            </g>
+            <g fill="#173244"><circle cx="104" cy="96" r="4"/><circle cx="220" cy="96" r="4"/><circle cx="336" cy="96" r="4"/></g>
+            <!-- indicator lamps -->
+            <g>
+              <circle class="cp__lamp" cx="92" cy="176" r="10" fill="#4fd36a"/><circle class="cp__lamp cp__lamp--b" cx="132" cy="176" r="10" fill="#f5b820"/><circle class="cp__lamp cp__lamp--c" cx="172" cy="176" r="10" fill="#ff4b3a"/>
+            </g>
+            <!-- display -->
+            <rect x="214" y="150" width="172" height="106" rx="8" fill="url(#cpScreen)" stroke="#6fa3b8" stroke-opacity=".5" stroke-width="2"/>
+            <polyline class="cp__trace" points="226,230 250,210 272,222 298,186 322,206 346,172 374,190" fill="none" stroke="#83d0cb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#83d0cb" fill-opacity=".7"><rect x="226" y="162" width="52" height="6" rx="3"/><rect x="226" y="174" width="30" height="6" rx="3"/></g>
+            <!-- selector + emergency stop -->
+            <circle cx="112" cy="232" r="22" fill="#10222e" stroke="#9db4be" stroke-width="2"/><rect x="108" y="212" width="8" height="22" rx="3" fill="#e9f3f6" transform="rotate(35 112 232)"/>
+            <circle cx="112" cy="302" r="30" fill="#f5b820"/><circle cx="112" cy="302" r="22" fill="#e0301f"/><circle cx="106" cy="295" r="7" fill="#fff" fill-opacity=".25"/>
+            <!-- breaker rail -->
+            <rect x="62" y="364" width="316" height="96" rx="8" fill="#0d1e29" stroke="#000" stroke-opacity=".3"/>
+            <g>
+              <rect x="74" y="376" width="38" height="72" rx="4" fill="#e9f3f6"/><rect x="86" y="386" width="14" height="26" rx="2" fill="#173244"/>
+              <rect x="120" y="376" width="38" height="72" rx="4" fill="#e9f3f6"/><rect x="132" y="386" width="14" height="26" rx="2" fill="#173244"/>
+              <rect x="166" y="376" width="38" height="72" rx="4" fill="#e9f3f6"/><rect x="178" y="410" width="14" height="26" rx="2" fill="#4a9e48"/>
+              <rect x="212" y="376" width="38" height="72" rx="4" fill="#e9f3f6"/><rect x="224" y="386" width="14" height="26" rx="2" fill="#173244"/>
+              <rect x="258" y="376" width="38" height="72" rx="4" fill="#e9f3f6"/><rect x="270" y="386" width="14" height="26" rx="2" fill="#173244"/>
+              <rect x="304" y="376" width="62" height="72" rx="4" fill="#cfe3ea"/><rect x="326" y="386" width="18" height="26" rx="2" fill="#173244"/>
+            </g>
+            <!-- vents -->
+            <g stroke="#0a1a24" stroke-opacity=".6" stroke-width="3" stroke-linecap="round"><line x1="130" y1="492" x2="310" y2="492"/><line x1="130" y1="504" x2="310" y2="504"/><line x1="130" y1="516" x2="310" y2="516"/></g>
+          </svg>
         </div>
-        <p class="stats-note">*Expansion plan. Manufacturing figures belong to Waaree Energies Ltd. Source: waaree.com.</p>
       </div>
     </section>
 
@@ -599,6 +644,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=39"></script>
+  <script src="js/main.js?v=40"></script>
 </body>
 </html>
