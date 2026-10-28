@@ -1374,3 +1374,5 @@ section[id] { scroll-margin-top: 72px; }
   .service-block--alt .service-block__visual { order: 0; }
   .service-block__card { aspect-ratio: 16 / 9; }
 }
+
+.division__note { margin-top: 18px; color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; max-width: 44ch; }
