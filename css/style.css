@@ -1457,3 +1457,22 @@ section[id] { scroll-margin-top: 72px; }
   .sectors__also a { margin-left: 60px; }
 }
 .intro__head--only { margin-bottom: 0; }
+
+
+/* ---------- Our team (about) ---------- */
+.team { background: var(--bg-soft); }
+.team__head { max-width: 640px; margin-bottom: clamp(32px, 5vw, 56px); }
+.team__head h2 { margin-top: 14px; }
+.team__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.team-card__photo {
+  position: relative; display: grid; place-items: end center; overflow: hidden; aspect-ratio: 4 / 5; border-radius: var(--radius);
+  background: linear-gradient(160deg, var(--teal) 0%, var(--navy) 100%); color: rgba(255, 255, 255, 0.35);
+}
+.team-card__photo svg { width: 72%; height: auto; }
+.team-card__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease); }
+.team-card:hover .team-card__photo img { transform: scale(1.05); }
+.team-card h3 { margin-top: 16px; font-size: 1.2rem; }
+.team-card p { margin-top: 4px; color: var(--muted); font-size: 0.95rem; }
+@media (max-width: 960px) { .team__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .team__grid { gap: 14px; } .team-card h3 { font-size: 1.05rem; } .team-card p { font-size: 0.85rem; } }
+.team__head .lead { margin-top: 16px; }
