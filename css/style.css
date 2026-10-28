@@ -1376,3 +1376,20 @@ section[id] { scroll-margin-top: 72px; }
 }
 
 .division__note { margin-top: 18px; color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; max-width: 44ch; }
+
+
+/* ---------- Landing page header: logo left, links centre, CTA right ---------- */
+.header--nav .header__inner { grid-template-columns: auto 1fr auto; }
+.header--nav .logo-slot { justify-self: start; }
+.header__nav { display: flex; justify-content: center; align-items: center; gap: clamp(18px, 2.6vw, 40px); }
+.header__nav a { position: relative; padding-block: 6px; font-size: 0.95rem; font-weight: 500; white-space: nowrap; color: rgba(255, 255, 255, 0.85); transition: color 0.3s; }
+.header__nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px; background: var(--aqua); transform: scaleX(0); transform-origin: left; transition: transform 0.45s var(--ease); }
+.header__nav a:hover, .header__nav a[aria-current="page"] { color: #fff; }
+.header__nav a:hover::after, .header__nav a[aria-current="page"]::after { transform: scaleX(1); }
+/* small screens: links sit on a second row and scroll sideways if they do not fit */
+@media (max-width: 960px) {
+  .header--nav .header__inner { grid-template-columns: 1fr auto; row-gap: 8px; }
+  .header__nav { grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; gap: 22px; overflow-x: auto; scrollbar-width: none; }
+  .header__nav::-webkit-scrollbar { display: none; }
+}
+@media (max-width: 760px) { .has-topnav .hero__dots { top: 132px; } }

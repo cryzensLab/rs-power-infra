@@ -13,9 +13,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/logo/favicon.png" />
-  <link rel="stylesheet" href="css/style.css?v=42" />
+  <link rel="stylesheet" href="css/style.css?v=44" />
 </head>
-<body>
+<body class="has-topnav">
 
   <!-- Loader -->
   <div class="loader" aria-hidden="true">
@@ -30,46 +30,24 @@
   </div>
   <div class="page-wipe" aria-hidden="true"></div>
 
-  <!-- Header -->
-  <header class="header">
+  <!-- Header: logo left, site links centre, call to action right -->
+  <header class="header header--nav">
     <div class="container header__inner">
-      <button class="menu-btn" data-menu-open aria-label="Open menu">
-        <span class="menu-btn__lines"><span></span><span></span><span></span></span>
-        <span class="menu-btn__label">Menu</span>
-      </button>
       <a href="index.html" class="logo-slot" aria-label="RS Power and Infra home">
         <img class="logo-img" src="assets/logo/logo.png" width="1000" height="465" alt="RS Power and Infra" />
       </a>
+      <nav class="header__nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="electrical.html" aria-current="page">Electrical &amp; Energy</a>
+        <a href="building-automation.html">Building Automation</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
       <div class="header__cta">
         <a href="contact.html" class="btn btn--sun magnetic">Contact Us <svg class="i"><use href="#i-arrow-right"/></svg></a>
       </div>
     </div>
   </header>
-
-  <!-- Menu overlay -->
-  <nav class="menu" aria-hidden="true" aria-label="Main menu">
-    <div class="container">
-      <div class="menu__top">
-        <button class="menu__close" data-menu-close><svg class="i"><use href="#i-close"/></svg> Close</button>
-        <a href="index.html" class="logo-slot"><img class="logo-img" src="assets/logo/logo.png" width="1000" height="465" alt="RS Power and Infra" /></a>
-      </div>
-      <div class="menu__body">
-        <ul class="menu__links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="electrical.html" aria-current="page">Electrical &amp; Energy</a></li>
-          <li><a href="building-automation.html">Building Automation</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="menu__info">
-          <div><h4>Call us</h4><a href="tel:+910000000000">+91 00000 00000</a></div>
-          <div><h4>Email</h4><a href="mailto:info@rspowerinfra.com">info@rspowerinfra.com</a></div>
-          <div><h4>Visit</h4><p>Your office address here,<br />City, State – 000000</p></div>
-          <div><a href="contact.html" class="btn">Get a Free Quote <svg class="i"><use href="#i-arrow-right"/></svg></a></div>
-        </div>
-      </div>
-    </div>
-  </nav>
 
   <main>
     <!-- Page hero -->
@@ -570,6 +548,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=42"></script>
+  <script src="js/main.js?v=44"></script>
 </body>
 </html>
