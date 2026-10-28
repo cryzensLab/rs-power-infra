@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/logo/favicon.png" />
-  <link rel="stylesheet" href="css/style.css?v=48" />
+  <link rel="stylesheet" href="css/style.css?v=49" />
   <script>try{if(sessionStorage.getItem("rs-wipe")==="1")document.documentElement.classList.add("is-arriving")}catch(e){}</script>
 </head>
 <body class="has-topnav">
@@ -106,7 +106,7 @@
               <h3>Advanced modules, made in India</h3>
               <p>N-Type, HJT, Mono PERC, bifacial, all-black and flexible panels engineered for maximum output in Indian conditions.</p>
               <ul class="pr-card__chips"><li>3Wp – 730Wp+</li><li>N-Type · HJT · PERC</li><li>30-yr power warranty*</li></ul>
-              <a href="about.html#waaree" class="pr-card__link">View module series <svg class="i"><use href="#i-arrow-up-right"/></svg></a>
+              <a href="#modules" class="pr-card__link">View module series <svg class="i"><use href="#i-arrow-up-right"/></svg></a>
             </div>
           </article>
 
@@ -140,6 +140,58 @@
               <a href="contact.html" class="pr-card__link" aria-label="Ask about energy storage"><svg class="i"><use href="#i-arrow-up-right"/></svg></a>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Module series (moved from About) -->
+    <section class="section" id="modules">
+      <div class="container">
+        <div class="series__head">
+          <div>
+            <span class="eyebrow" data-reveal>Solar module range</span>
+            <h2 class="h-lg" data-split="words">Technologically advanced modules, made in India</h2>
+          </div>
+          <div class="range-badge" data-reveal>3Wp – 730Wp+</div>
+        </div>
+
+        <!-- Panel graphics are drawn in CSS; swap with real product images later if you like -->
+        <div class="series" data-stagger>
+          <article class="s-card"><div class="s-card__vis"><span class="panel"></span><span class="panel panel--s"></span></div><span class="s-card__name">Plexus Series</span><h3>N-type HJT</h3><p>570 Wp to 730 Wp (G12)</p></article>
+          <article class="s-card"><div class="s-card__vis"><span class="panel"></span><span class="panel panel--s"></span></div><span class="s-card__name">Elite Series</span><h3>N-type</h3><p>555–715 Wp (G12) · 415–615 Wp (M10/M10R)</p></article>
+          <article class="s-card"><div class="s-card__vis"><span class="panel"></span><span class="panel"></span></div><span class="s-card__name">Anhay Series</span><h3>Bifacial P-type PERC</h3><p>400 Wp to 665 Wp</p></article>
+          <article class="s-card"><div class="s-card__vis"><span class="panel"></span></div><span class="s-card__name">Arka Series</span><h3>P-type Mono PERC</h3><p>400 Wp to 665 Wp</p></article>
+          <article class="s-card"><div class="s-card__vis"><span class="panel panel--thin"></span><span class="panel panel--s"></span><span class="panel panel--xs"></span></div><span class="s-card__name">Flexible PV</span><h3>Flexible modules</h3><p>110 Wp to 550 Wp</p></article>
+          <article class="s-card"><div class="s-card__vis"><span class="panel"></span></div><span class="s-card__name">AC Modules</span><h3>Built-in micro-inverter</h3><p>Customisable Wp</p></article>
+          <article class="s-card"><div class="s-card__vis"><span class="panel panel--thin"></span><span class="panel panel--thin"></span></div><span class="s-card__name">Tracker Modules</span><h3>For solar trackers</h3><p>WS-40, WS-60</p></article>
+          <article class="s-card"><div class="s-card__vis"><span class="panel panel--blue panel--s"></span><span class="panel panel--blue panel--xs"></span></div><span class="s-card__name">Arun Series</span><h3>Small modules</h3><p>WS-40 to WS-90</p></article>
+        </div>
+
+        <div class="warranty" data-stagger>
+          <div class="warranty__item"><b>12</b><span>Years product warranty*<small>Minimum 90% output at the end of 12 years</small></span></div>
+          <div class="warranty__item"><b>30</b><span>Years limited power output warranty*<small>Minimum 80% output at the end of 27/30 years</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inverters (moved from About) -->
+    <section class="section" id="inverters" style="background: var(--bg-soft)">
+      <div class="container inverter">
+        <div class="inverter__media" data-reveal>
+          <img src="assets/images/products/waaree-inverter.webp" alt="Waaree on-grid solar inverter" width="550" height="477" loading="lazy" />
+        </div>
+        <div class="inverter__copy">
+          <span class="eyebrow" data-reveal>Solar on-grid inverters · 1 kW – 350 kW</span>
+          <h2 class="h-lg" data-split="words">Smart inverters, built for performance</h2>
+          <p data-reveal>Waaree's next-generation single and three phase on-grid inverters convert DC from your panels into usable AC power with industry-leading efficiency, backed by an 8-year warranty for complete peace of mind.</p>
+          <div class="feat-grid" data-stagger>
+            <div class="feat"><svg class="i"><use href="#i-server"/></svg><span>Domestic data hosting</span></div>
+            <div class="feat"><svg class="i"><use href="#i-monitor"/></svg><span>String-level monitoring &amp; touch LCD</span></div>
+            <div class="feat"><svg class="i"><use href="#i-layers"/></svg><span>Multi-layer safety protection</span></div>
+            <div class="feat"><svg class="i"><use href="#i-split"/></svg><span>Multi MPPT / DC strings</span></div>
+            <div class="feat"><svg class="i"><use href="#i-wifi"/></svg><span>Built-in Wi-Fi &amp; DC switch</span></div>
+            <div class="feat"><svg class="i"><use href="#i-gauge"/></svg><span>Up to 98% efficiency</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -507,7 +559,7 @@
       </div>
       <div><h4>Electrical &amp; Energy</h4><ul><li><a href="electrical.html#solar">Solar</a></li><li><a href="electrical.html#control-panels">Control Panels</a></li></ul></div>
       <div><h4>Building Automation</h4><ul><li><a href="building-automation.html">Overview</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="about.html#values">Our values</a></li><li><a href="about.html#why">Why RSPI</a></li><li><a href="index.html#sectors">Sectors we serve</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="about.html#values">Our values</a></li><li><a href="about.html#why">Why RSPI</a></li><li><a href="about.html#team">Our team</a></li><li><a href="index.html#sectors">Sectors we serve</a></li></ul></div>
       <div><h4>Support</h4><ul><li><a href="contact.html">Contact</a></li><li><a href="contact.html#faq">Solar FAQ</a></li><li><a href="electrical.html#homeowners">Home solar subsidy</a></li><li><a href="electrical.html#planner">Solar calculator</a></li></ul></div>
     </div>
     <div class="footer__panel">
@@ -536,6 +588,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=48"></script>
+  <script src="js/main.js?v=49"></script>
 </body>
 </html>

@@ -20,6 +20,7 @@ npx http-server -p 5500 -c-1
 | **Solar content** | All solar material (Waaree products, PM Surya Ghar, solar services, planner) lives on `electrical.html`. Home only has a short solar teaser. |
 | **Product images** | Module, inverter, solar kit and energy storage use official Waaree images from waaree.com (`assets/images/products/`). |
 | **Inverter image** | `about.html` → `.inverter__media` (uses the Waaree inverter image). |
+| **Team** | `about.html` → the four `.team-card` blocks under "Our team": replace the name and role, and swap the silhouette for `<img src="assets/team/name.jpg" alt="Full name" loading="lazy" />` (photos go in `assets/team/`, about 800 × 1000px). Duplicate or delete cards as needed. |
 | **Phone, email, address** | Search all pages for `+91 00000 00000`, `info@rspowerinfra.com` and `Your office address here`. |
 | **Google Map** | `contact.html` → iframe `src`: replace `q=India&z=5` with your address. |
 | **Reviews** | `index.html` → `.quote` blocks are samples; replace them with real customer reviews. |
@@ -27,4 +28,4 @@ npx http-server -p 5500 -c-1
 
 The contact form has no backend yet. It validates the fields and shows a thank-you message, and once a WhatsApp number is set it also opens the enquiry in WhatsApp. To get enquiries by email, connect a service like Formspree.
 
-After editing CSS or JS on a live server, bump `?v=48` in the `<link>` and `<script>` tags so visitors get the new version.
+After editing CSS or JS on a live server, bump `?v=49` in the `<link>` and `<script>` tags so visitors get the new version.
