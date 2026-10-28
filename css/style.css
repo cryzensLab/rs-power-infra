@@ -1274,7 +1274,7 @@ main { overflow-x: clip; }
 /* ---------- Industries & sectors (home) ---------- */
 .sectors { background: var(--bg-soft); }
 .sectors__head { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: end; margin-bottom: clamp(32px, 5vw, 56px); }
-.sectors__head h2 { margin-top: 14px; max-width: 16ch; }
+.sectors__head h2 { margin-top: 14px; max-width: 24ch; }
 .sectors__head p { color: var(--muted); }
 .sectors__grid { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .sector {
@@ -1415,3 +1415,37 @@ section[id] { scroll-margin-top: 72px; }
   .header__nav::-webkit-scrollbar { display: none; }
 }
 @media (max-width: 760px) { .has-topnav .hero__dots { top: 132px; } }
+
+
+/* ---------- Sectors (home): solar-led, short ---------- */
+.sectors__grid--solar { grid-template-columns: 1fr 1fr; gap: 20px; }
+.sectors__grid--solar .sector { aspect-ratio: 16 / 10; border-radius: var(--radius-lg); }
+.sectors__grid--solar .sector__art svg { left: 50%; width: auto; height: 76%; bottom: 24%; translate: -50% 0; }
+.sectors__grid--solar .sector__tag { left: 24px; top: 24px; }
+.sectors__grid--solar .sector__text { left: 28px; right: 28px; bottom: 26px; }
+.sectors__grid--solar .sector__text h3 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
+.sectors__grid--solar .sector__text p { font-size: 1rem; }
+.sector__more { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 0.9rem; font-weight: 600; color: var(--sun); transition: gap 0.4s var(--ease); }
+.sector__more:hover { gap: 14px; }
+.sectors__also { display: flex; align-items: center; gap: 16px; margin-top: 20px; padding: 18px 24px; border-radius: 20px; background: #fff; border: 1px solid var(--line); }
+.sectors__also-icon { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: var(--bg-soft); color: var(--teal); }
+.sectors__also p { color: var(--muted); font-size: 0.95rem; }
+.sectors__also p b { color: var(--ink); font-weight: 600; }
+.sectors__also a { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; font-weight: 600; color: var(--green-dark); transition: gap 0.4s var(--ease); }
+.sectors__also a:hover { gap: 14px; }
+@media (max-width: 960px) {
+  .sectors__grid--solar { grid-template-columns: 1fr; gap: 14px; }
+  .sectors__grid--solar .sector { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 560px) {
+  .sectors__grid--solar .sector { aspect-ratio: 4 / 3.4; }
+  .sectors__grid--solar .sector__art svg { height: 68%; bottom: 30%; }
+}
+@media (max-width: 760px) {
+  .sectors__grid--solar .sector__tag { left: 16px; top: 16px; }
+  .sectors__grid--solar .sector__text { left: 18px; right: 18px; bottom: 18px; }
+  .sectors__also { flex-wrap: wrap; padding: 16px 18px; }
+  .sectors__also p { flex: 1 1 200px; }
+  .sectors__also a { margin-left: 60px; }
+}
+.sectors__grid--solar .sector__art svg > rect[y="240"][height="60"] { display: none; }
