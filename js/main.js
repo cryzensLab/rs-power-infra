@@ -416,6 +416,7 @@ function initContactForm() {
     name: (v) => v.trim().length >= 2 || "Please enter your name",
     phone: (v) => /^[6-9]\d{9}$/.test(v.replace(/\D/g, "").slice(-10)) || "Enter a valid 10-digit mobile number",
     email: (v) => !v || /^\S+@\S+\.\S+$/.test(v) || "Enter a valid email",
+    service: (v) => !!v || "Select what you need",
     property: (v) => !!v || "Select a property type",
   };
   const check = (input) => {
@@ -435,7 +436,7 @@ function initContactForm() {
     const ok = $$("input, select, textarea", form).map(check).every(Boolean);
     if (!ok) return;
     const d = Object.fromEntries(new FormData(form));
-    const msg = `New enquiry\nName: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email || "-"}\nProperty: ${d.property}\nMonthly bill: ${d.bill || "-"}\nMessage: ${d.message || "-"}`;
+    const msg = `New enquiry\nName: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email || "-"}\nService: ${d.service}\nProperty: ${d.property}\nMonthly bill: ${d.bill || "-"}\nMessage: ${d.message || "-"}`;
     // Demo mode: no backend yet. If a WhatsApp number is set, the enquiry opens in WhatsApp.
     if (CONFIG.whatsappNumber) openWhatsApp(msg);
     card.classList.add("is-sent");
