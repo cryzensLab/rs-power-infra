@@ -1,6 +1,6 @@
 # RS Power and Infra — Website
 
-A static site with five pages: `index.html` (Home), `electrical.html` (Electrical & Energy: Smart Building, Solar, Control Panels), `infrastructure.html` (Infrastructure & Built Environment: Architecture, Civil, Interiors), `about.html` and `contact.html`. It uses plain HTML, CSS and JavaScript, with no build step.
+A static site with five pages: `index.html` (Home), `electrical.html` (Electrical & Energy: Solar, Control Panels), `building-automation.html` (Building Automation), `about.html` and `contact.html`. It uses plain HTML, CSS and JavaScript, with no build step.
 
 ## Run locally
 Open `index.html` in a browser, or serve the folder (recommended):
@@ -27,4 +27,4 @@ npx http-server -p 5500 -c-1
 
 The contact form has no backend yet. It validates the fields and shows a thank-you message, and once a WhatsApp number is set it also opens the enquiry in WhatsApp. To get enquiries by email, connect a service like Formspree.
 
-After editing CSS or JS on a live server, bump `?v=41` in the `<link>` and `<script>` tags so visitors get the new version.
+After editing CSS or JS on a live server, bump `?v=42` in the `<link>` and `<script>` tags so visitors get the new version.
