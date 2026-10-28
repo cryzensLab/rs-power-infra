@@ -1417,35 +1417,39 @@ section[id] { scroll-margin-top: 72px; }
 @media (max-width: 760px) { .has-topnav .hero__dots { top: 132px; } }
 
 
-/* ---------- Sectors (home): solar-led, short ---------- */
-.sectors__grid--solar { grid-template-columns: 1fr 1fr; gap: 20px; }
-.sectors__grid--solar .sector { aspect-ratio: 16 / 10; border-radius: var(--radius-lg); }
-.sectors__grid--solar .sector__art svg { left: 50%; width: auto; height: 76%; bottom: 24%; translate: -50% 0; }
-.sectors__grid--solar .sector__tag { left: 24px; top: 24px; }
-.sectors__grid--solar .sector__text { left: 28px; right: 28px; bottom: 26px; }
-.sectors__grid--solar .sector__text h3 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); }
-.sectors__grid--solar .sector__text p { font-size: 1rem; }
-.sector__more { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 0.9rem; font-weight: 600; color: var(--sun); transition: gap 0.4s var(--ease); }
+/* ---------- Sectors (home): one large solar tile, then two small lines ---------- */
+.sectors__grid--solar { grid-template-columns: 1fr; }
+.sectors__grid--solar .sector { aspect-ratio: 21 / 8; border-radius: var(--radius-lg); }
+.sectors__grid--solar .sector__art::after { background: linear-gradient(90deg, rgba(7, 17, 24, 0.88) 0%, rgba(7, 17, 24, 0.5) 42%, rgba(7, 17, 24, 0) 70%); }
+.sectors__grid--solar .sector__art svg { left: auto; right: 4%; width: auto; height: 86%; bottom: 7%; }
+.sectors__grid--solar .sector__art svg > rect[y="240"][height="60"] { display: none; }
+.sectors__grid--solar .sector__tag { left: 28px; top: 28px; }
+.sectors__grid--solar .sector__text { left: 32px; right: auto; bottom: 32px; max-width: 46%; }
+.sectors__grid--solar .sector__text h3 { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+.sectors__grid--solar .sector__text p { font-size: 1.05rem; }
+.sector__more { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 0.95rem; font-weight: 600; color: var(--sun); transition: gap 0.4s var(--ease); }
 .sector__more:hover { gap: 14px; }
-.sectors__also { display: flex; align-items: center; gap: 16px; margin-top: 20px; padding: 18px 24px; border-radius: 20px; background: #fff; border: 1px solid var(--line); }
+.sectors__also-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.sectors__also { display: flex; align-items: center; gap: 16px; padding: 18px 24px; border-radius: 20px; background: #fff; border: 1px solid var(--line); }
 .sectors__also-icon { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: var(--bg-soft); color: var(--teal); }
 .sectors__also p { color: var(--muted); font-size: 0.95rem; }
 .sectors__also p b { color: var(--ink); font-weight: 600; }
 .sectors__also a { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; font-weight: 600; color: var(--green-dark); transition: gap 0.4s var(--ease); }
 .sectors__also a:hover { gap: 14px; }
 @media (max-width: 960px) {
-  .sectors__grid--solar { grid-template-columns: 1fr; gap: 14px; }
-  .sectors__grid--solar .sector { aspect-ratio: 16 / 9; }
+  .sectors__grid--solar .sector { aspect-ratio: 16 / 10; }
+  .sectors__grid--solar .sector__art::after { background: linear-gradient(0deg, rgba(7, 17, 24, 0.9) 0%, rgba(7, 17, 24, 0.45) 38%, rgba(7, 17, 24, 0) 66%); }
+  .sectors__grid--solar .sector__art svg { left: 50%; right: auto; translate: -50% 0; height: 70%; bottom: 28%; }
+  .sectors__grid--solar .sector__text { left: 24px; right: 24px; bottom: 24px; max-width: none; }
+  .sectors__also-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
-  .sectors__grid--solar .sector { aspect-ratio: 4 / 3.4; }
-  .sectors__grid--solar .sector__art svg { height: 68%; bottom: 30%; }
-}
-@media (max-width: 760px) {
+  .sectors__grid--solar .sector { aspect-ratio: 4 / 4.6; border-radius: 22px; }
+  .sectors__grid--solar .sector__art svg { height: 50%; bottom: 40%; }
   .sectors__grid--solar .sector__tag { left: 16px; top: 16px; }
   .sectors__grid--solar .sector__text { left: 18px; right: 18px; bottom: 18px; }
   .sectors__also { flex-wrap: wrap; padding: 16px 18px; }
   .sectors__also p { flex: 1 1 200px; }
   .sectors__also a { margin-left: 60px; }
 }
-.sectors__grid--solar .sector__art svg > rect[y="240"][height="60"] { display: none; }
+.intro__head--only { margin-bottom: 0; }
