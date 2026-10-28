@@ -160,6 +160,10 @@ svg.i--fill { fill: currentColor; stroke: none; }
   position: fixed; inset: 0; z-index: 190; pointer-events: none;
   background: var(--teal); transform: scaleY(0); transform-origin: bottom;
 }
+/* arriving from another page: the cover is already there on first paint and lifts away, so there is no white flash */
+.is-arriving .loader { display: none; }
+.is-arriving .page-wipe { transform: scaleY(1); transform-origin: top; animation: wipeAway 0.8s 0.1s cubic-bezier(0.76, 0, 0.24, 1) forwards; }
+@keyframes wipeAway { to { transform: scaleY(0); } }
 
 /* ---------- Header ---------- */
 .header {
