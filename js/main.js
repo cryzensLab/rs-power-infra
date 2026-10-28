@@ -481,7 +481,11 @@ function initPageLinks() {
     if (!href || !/\.html(#.*)?$/.test(href) || a.target === "_blank") return;
     a.addEventListener("click", (e) => {
       if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+      // same page (only the #section changes): no page load, so no wipe, just let the browser scroll
+      if (new URL(a.href, location.href).pathname === location.pathname) return;
       e.preventDefault();
+      // tell the next page to continue from this teal cover instead of showing the loading screen
+      try { sessionStorage.setItem("rs-wipe", "1"); } catch (err) {}
       gsap.set(wipe, { transformOrigin: "bottom" });
       gsap.to(wipe, { scaleY: 1, duration: 0.6, ease: "power4.inOut", onComplete: () => (window.location.href = href) });
     });
@@ -508,6 +512,17 @@ function initLenis() {
 /* ---------- Loader + intro ---------- */
 function runLoader(onDone) {
   const loader = $(".loader");
+  // arrived through a site link: the teal cover from the previous page slides away (CSS), no loading screen
+  if (document.documentElement.classList.contains("is-arriving")) {
+    try { sessionStorage.removeItem("rs-wipe"); sessionStorage.setItem("rs-seen", "1"); } catch (e) {}
+    loader?.remove();
+    const wipe = $(".page-wipe");
+    const done = () => document.documentElement.classList.remove("is-arriving");
+    wipe?.addEventListener("animationend", done, { once: true });
+    setTimeout(done, 1500);
+    setTimeout(onDone, 350);
+    return;
+  }
   if (!loader || !hasGsap || reduceMotion) { loader?.remove(); onDone(); return; }
   let seen = false;
   try { seen = sessionStorage.getItem("rs-seen") === "1"; sessionStorage.setItem("rs-seen", "1"); } catch (e) {}
