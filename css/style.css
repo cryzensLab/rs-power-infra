@@ -1278,13 +1278,30 @@ main { overflow-x: clip; }
 .sectors__head p { color: var(--muted); }
 .sectors__grid { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .sector {
-  display: flex; flex-direction: column; gap: 18px; padding: 24px; border-radius: 22px; background: #fff; border: 1px solid var(--line);
-  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease), border-color 0.4s;
+  position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 1 / 1.1; border-radius: 24px; color: #fff;
+  background: linear-gradient(160deg, var(--teal) 0%, var(--navy) 100%);
+  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
 }
-.sector:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
-.sector__icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; background: var(--bg-soft); color: var(--teal); transition: background 0.4s, color 0.4s; }
-.sector:hover .sector__icon { background: var(--green); color: #fff; }
-.sector b { font-weight: 600; line-height: 1.35; }
+.sector:nth-child(4n + 2) { background: linear-gradient(160deg, var(--navy) 0%, var(--teal-deep) 100%); }
+.sector:nth-child(4n + 3) { background: linear-gradient(160deg, var(--teal-deep) 0%, var(--green-dark) 160%); }
+.sector:nth-child(4n) { background: linear-gradient(160deg, var(--navy) 0%, var(--green-dark) 150%); }
+.sector:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+.sector__art { position: absolute; inset: 0; z-index: -1; }
+.sector__art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(7, 17, 24, 0.9) 0%, rgba(7, 17, 24, 0.45) 38%, rgba(7, 17, 24, 0) 66%); }
+.sector__art svg { position: absolute; left: 0; bottom: 22%; width: 100%; height: auto; transform-origin: 50% 100%; transition: transform 1.2s var(--ease); }
+.sector:hover .sector__art svg { transform: scale(1.07); }
+.sector__tag {
+  position: absolute; left: 16px; top: 16px; padding: 6px 12px; border-radius: 999px;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.22);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.sector__text { position: absolute; left: 20px; right: 20px; bottom: 20px; }
+.sector__text h3 { font-size: clamp(1.25rem, 1.7vw, 1.55rem); line-height: 1.15; }
+.sector__text p { margin-top: 8px; font-size: 0.9rem; line-height: 1.4; color: rgba(255, 255, 255, 0.82); }
+.sec-sun { animation: spin 40s linear infinite; }
+.sec-smoke { animation: secSmoke 4.2s ease-out infinite; }
+@keyframes secSmoke { 0% { transform: translate(0, 0) scale(0.6); opacity: 0.6; } 100% { transform: translate(14px, -46px) scale(1.5); opacity: 0; } }
 
 /* ---------- Why choose RSPI (about) ---------- */
 .why__head { max-width: 640px; margin-bottom: clamp(32px, 5vw, 56px); }
@@ -1305,7 +1322,12 @@ main { overflow-x: clip; }
 @media (max-width: 640px) {
   .why__grid { grid-template-columns: 1fr; }
   .sectors__grid { gap: 10px; }
-  .sector { padding: 18px; gap: 14px; border-radius: 18px; }
+  .sector { aspect-ratio: 3 / 4; border-radius: 18px; }
+  .sector__art svg { bottom: 30%; }
+  .sector__tag { left: 10px; top: 10px; padding: 5px 9px; font-size: 0.6rem; }
+  .sector__text { left: 12px; right: 12px; bottom: 12px; }
+  .sector__text h3 { font-size: 1.05rem; }
+  .sector__text p { font-size: 0.78rem; }
   .division__list li { padding: 12px 14px 12px 12px; }
 }
 .intro__copy { display: grid; gap: 16px; }
