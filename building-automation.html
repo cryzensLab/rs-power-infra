@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Building Automation | RSPI</title>
-  <meta name="description" content="Building automation from RSPI: smarter control of a building’s electrical and technical systems for safer, more efficient buildings." />
+  <meta name="description" content="Building automation from RSPI: control your building’s lights, switches, fans, AC and more from one app or wall panel." />
   <meta property="og:title" content="Building Automation | RSPI" />
-  <meta property="og:description" content="Smarter control of a building’s electrical and technical systems." />
+  <meta property="og:description" content="Control your whole building from one app." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#145277" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/logo/favicon.png" />
-  <link rel="stylesheet" href="css/style.css?v=49" />
+  <link rel="stylesheet" href="css/style.css?v=53" />
   <script>try{if(sessionStorage.getItem("rs-wipe")==="1")document.documentElement.classList.add("is-arriving")}catch(e){}</script>
 </head>
 <body class="has-topnav">
@@ -39,7 +39,7 @@
       </a>
       <nav class="header__nav" aria-label="Main">
         <a href="index.html">Home</a>
-        <a href="electrical.html">Electrical &amp; Energy</a>
+        <a href="solar.html">Solar</a>
         <a href="building-automation.html" aria-current="page">Building Automation</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
@@ -57,73 +57,92 @@
       <div class="container">
         <nav class="crumbs" data-hero-fade aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Building Automation</span></nav>
         <h1 class="page-hero__title page-hero__title--long" data-split="chars" data-hero-title>Building Automation</h1>
-        <p class="page-hero__sub" data-hero-fade>Smarter control of a building’s electrical and technical systems, from one team.</p>
+        <p class="page-hero__sub" data-hero-fade>Your whole building at your fingertips: control every switch from one app.</p>
       </div>
     </section>
 
-    <section class="section service-block" id="building-automation">
-      <div class="container service-block__grid">
-        <div class="service-block__copy">
-          <span class="eyebrow" data-reveal>Division 02 · Building Automation</span>
-          <h2 class="h-lg" data-split="words">Smarter buildings, run more efficiently</h2>
-          <p data-reveal>Building automation connects and controls a building’s electrical and technical systems so they run more safely, efficiently and with less manual effort.</p>
-          <p data-reveal>Tell us about your building and we will recommend the right solution for your requirements and budget.</p>
-          <div data-reveal><a href="contact.html" class="btn btn--dark magnetic">Discuss your building <span class="btn__dot"><svg class="i"><use href="#i-arrow-up-right"/></svg></span></a></div>
+    <!-- ONE APP: explanation + interactive demo -->
+    <section class="section" id="building-automation">
+      <div class="container ba-split">
+        <div>
+          <span class="eyebrow" data-reveal>Our second service</span>
+          <h2 class="h-lg" data-split="words">Control everything from one place</h2>
+          <p data-reveal>We automate your building so lights, switches, fans, AC and more can be controlled from a single device, instead of walking from room to room.</p>
+          <ul class="ba-ways" data-stagger>
+            <li><svg class="i"><use href="#i-monitor"/></svg><div><b>Phone app or wall touch panel</b><span>Control any switch from anywhere in the building, or remotely.</span></div></li>
+            <li><svg class="i"><use href="#i-clock"/></svg><div><b>Schedules &amp; one-tap scenes</b><span>Lights and AC switch on or off on time, by themselves.</span></div></li>
+            <li><svg class="i"><use href="#i-gauge"/></svg><div><b>See and save energy</b><span>Spot what is left running and cut wasted power.</span></div></li>
+          </ul>
+          <div data-reveal><a href="contact.html" class="btn magnetic">Discuss your building <svg class="i"><use href="#i-arrow-right"/></svg></a></div>
         </div>
-        <div class="service-block__visual" data-reveal>
-          <div class="service-block__card" aria-hidden="true"><svg class="i"><use href="#i-building"/></svg></div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Projects we take on -->
-    <section class="section sectors" id="projects">
-      <div class="container">
-        <div class="sectors__head">
-          <div>
-            <span class="eyebrow" data-reveal>Where it fits</span>
-            <h2 class="h-lg" data-split="words">Built around your building</h2>
+        <!-- Interactive demo (illustration only): tap tiles to switch devices -->
+        <div data-reveal>
+          <div class="phone" data-ba-demo>
+            <div class="phone__screen">
+              <div class="phone__top"><span>9:41</span><span>RSPI Smart Building</span></div>
+              <div class="phone__title">Main Office<small>All devices · one app</small></div>
+              <div class="phone__stats">
+                <div><b data-ba-count>3 on</b>Devices</div>
+                <div><b data-ba-power>4.2 kW</b>Using now</div>
+              </div>
+              <div class="phone__grid">
+                <button class="tile is-on" data-watts="400" aria-pressed="true"><svg class="i"><use href="#i-bolt"/></svg><span><b>Lights</b><br><small>Floor 1</small></span></button>
+                <button class="tile is-on" data-watts="3500" aria-pressed="true"><svg class="i"><use href="#i-wifi"/></svg><span><b>Air conditioning</b><br><small>24°C</small></span></button>
+                <button class="tile" data-watts="300" aria-pressed="false"><svg class="i"><use href="#i-gear"/></svg><span><b>Fans</b><br><small>Hall</small></span></button>
+                <button class="tile is-on" data-watts="300" aria-pressed="true"><svg class="i"><use href="#i-grid"/></svg><span><b>Switches</b><br><small>Workstations</small></span></button>
+                <button class="tile" data-watts="60" aria-pressed="false"><svg class="i"><use href="#i-eye"/></svg><span><b>Cameras</b><br><small>Security</small></span></button>
+                <button class="tile" data-watts="20" aria-pressed="false"><svg class="i"><use href="#i-shield"/></svg><span><b>Door lock</b><br><small>Main gate</small></span></button>
+              </div>
+              <div class="phone__scene">
+                <button data-ba-scene="off">All off</button>
+                <button data-ba-scene="work">Work mode</button>
+              </div>
+            </div>
           </div>
+          <p class="phone__hint">Try it: tap a tile to switch it on or off.</p>
         </div>
-        <ul class="sectors__grid sectors__grid--4" data-stagger>
-          <li class="sector">
-            <div class="sector__art" aria-hidden="true"><svg viewBox="0 0 400 300" focusable="false"><circle cx="320" cy="66" r="24" fill="#ffc93c" opacity="0.95"/><rect x="0" y="240" width="400" height="60" fill="#0b2433" opacity="0.45"/><rect x="70" y="150" width="130" height="90" fill="#ffffff" opacity="0.92"/><polygon points="58,152 135,92 212,152" fill="#83d0cb"/><rect x="118" y="188" width="28" height="52" fill="#145277"/><rect x="84" y="170" width="24" height="24" fill="#145277" opacity="0.7"/><rect x="162" y="170" width="24" height="24" fill="#145277" opacity="0.7"/><rect x="236" y="185" width="84" height="55" fill="#ffffff" opacity="0.8"/><polygon points="228,187 278,150 328,187" fill="#7fd57b"/><rect x="268" y="210" width="20" height="30" fill="#145277"/><rect x="352" y="205" width="6" height="35" fill="#ffffff" opacity="0.6"/><circle cx="355" cy="192" r="21" fill="#7fd57b" opacity="0.9"/></svg></div>
-            <span class="sector__tag">Buildings</span>
-            <div class="sector__text"><h3>Residential</h3><p>Homes and housing developments</p></div>
-          </li>
-          <li class="sector">
-            <div class="sector__art" aria-hidden="true"><svg viewBox="0 0 400 300" focusable="false"><circle cx="330" cy="64" r="22" fill="#ffc93c" opacity="0.9"/><rect x="0" y="240" width="400" height="60" fill="#0b2433" opacity="0.45"/><rect x="110" y="62" width="92" height="178" fill="#ffffff" opacity="0.93"/><rect x="120" y="74" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="140" y="74" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="160" y="74" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="180" y="74" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="120" y="94" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="140" y="94" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="160" y="94" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="180" y="94" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="120" y="114" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="140" y="114" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="160" y="114" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="180" y="114" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="120" y="134" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="140" y="134" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="160" y="134" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="180" y="134" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="120" y="154" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="140" y="154" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="160" y="154" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="180" y="154" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="120" y="174" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="140" y="174" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="160" y="174" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="180" y="174" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="120" y="194" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="140" y="194" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="160" y="194" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="180" y="194" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="120" y="214" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="140" y="214" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="160" y="214" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="180" y="214" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="152" y="40" width="4" height="24" fill="#ffffff" opacity="0.8"/><circle cx="154" cy="38" r="5" fill="#ffc93c"/><rect x="212" y="120" width="74" height="120" fill="#ffffff" opacity="0.78"/><rect x="222" y="132" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="244" y="132" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="266" y="132" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="222" y="152" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="244" y="152" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="266" y="152" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="222" y="172" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="244" y="172" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="266" y="172" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="222" y="192" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="244" y="192" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="266" y="192" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="222" y="212" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="244" y="212" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="266" y="212" width="12" height="12" fill="#145277" opacity="0.55"/><rect x="56" y="166" width="44" height="74" fill="#ffffff" opacity="0.7"/><rect x="64" y="176" width="10" height="12" fill="#145277" opacity="0.55"/><rect x="82" y="176" width="10" height="12" fill="#145277" opacity="0.55"/><rect x="64" y="196" width="10" height="12" fill="#145277" opacity="0.55"/><rect x="82" y="196" width="10" height="12" fill="#145277" opacity="0.55"/><rect x="64" y="216" width="10" height="12" fill="#145277" opacity="0.55"/><rect x="82" y="216" width="10" height="12" fill="#145277" opacity="0.55"/></svg></div>
-            <span class="sector__tag">Buildings</span>
-            <div class="sector__text"><h3>Commercial</h3><p>Offices and business buildings</p></div>
-          </li>
-          <li class="sector">
-            <div class="sector__art" aria-hidden="true"><svg viewBox="0 0 400 300" focusable="false"><rect x="0" y="240" width="400" height="60" fill="#0b2433" opacity="0.45"/><polygon points="56,240 56,132 104,170 104,132 152,170 152,132 200,170 200,132 248,170 288,170 288,240" fill="#ffffff" opacity="0.93"/><rect x="300" y="96" width="22" height="144" fill="#83d0cb"/><rect x="300" y="118" width="22" height="10" fill="#ffc93c"/><circle class="sec-smoke" style="animation-delay:0s" cx="311" cy="84" r="11" fill="#ffffff" opacity=".55"/><circle class="sec-smoke" style="animation-delay:1.4s" cx="319" cy="84" r="14" fill="#ffffff" opacity=".55"/><circle class="sec-smoke" style="animation-delay:2.8s" cx="309" cy="84" r="12" fill="#ffffff" opacity=".55"/><rect x="144" y="200" width="44" height="40" fill="#145277"/><rect x="70" y="188" width="18" height="14" fill="#145277" opacity="0.55"/><rect x="100" y="188" width="18" height="14" fill="#145277" opacity="0.55"/><rect x="130" y="188" width="18" height="14" fill="#145277" opacity="0.55"/><rect x="160" y="188" width="18" height="14" fill="#145277" opacity="0.55"/><rect x="190" y="188" width="18" height="14" fill="#145277" opacity="0.55"/><circle cx="60" cy="70" r="18" fill="#ffc93c" opacity="0.85"/></svg></div>
-            <span class="sector__tag">Buildings</span>
-            <div class="sector__text"><h3>Industrial</h3><p>Factories and manufacturing units</p></div>
-          </li>
-          <li class="sector">
-            <div class="sector__art" aria-hidden="true"><svg viewBox="0 0 400 300" focusable="false"><circle cx="330" cy="62" r="22" fill="#ffc93c" opacity="0.9"/><rect x="0" y="240" width="400" height="60" fill="#0b2433" opacity="0.45"/><rect x="80" y="150" width="240" height="90" fill="#ffffff" opacity="0.93"/><polygon points="68,150 200,96 332,150" fill="#83d0cb"/><rect x="102" y="150" width="12" height="82" fill="#145277" opacity="0.35"/><rect x="140" y="150" width="12" height="82" fill="#145277" opacity="0.35"/><rect x="178" y="150" width="12" height="82" fill="#145277" opacity="0.35"/><rect x="216" y="150" width="12" height="82" fill="#145277" opacity="0.35"/><rect x="254" y="150" width="12" height="82" fill="#145277" opacity="0.35"/><rect x="292" y="150" width="12" height="82" fill="#145277" opacity="0.35"/><rect x="186" y="192" width="28" height="48" fill="#145277"/><rect x="96" y="232" width="208" height="8" fill="#ffffff" opacity="0.7"/><rect x="198" y="58" width="3" height="40" fill="#ffffff" opacity="0.85"/><polygon points="201,58 228,67 201,76" fill="#ffc93c"/></svg></div>
-            <span class="sector__tag">Buildings</span>
-            <div class="sector__text"><h3>Institutional</h3><p>Educational and institutional buildings</p></div>
-          </li>
+      </div>
+    </section>
+
+    <!-- WHAT YOU CAN CONTROL -->
+    <section class="section section--soft why" id="control">
+      <div class="container">
+        <div class="center-head">
+          <span class="eyebrow" data-reveal>What you can control</span>
+          <h2 class="h-lg" data-split="words">Every system, one screen</h2>
+        </div>
+        <div class="why__grid" data-stagger>
+          <article class="why-card"><span class="why-card__icon"><svg class="i"><use href="#i-bolt"/></svg></span><h3>Lights &amp; switches</h3><p>Switch, dim or schedule lighting across every floor.</p></article>
+          <article class="why-card"><span class="why-card__icon"><svg class="i"><use href="#i-wifi"/></svg></span><h3>Fans &amp; AC</h3><p>Set temperatures and timings so cooling runs only when needed.</p></article>
+          <article class="why-card"><span class="why-card__icon"><svg class="i"><use href="#i-layers"/></svg></span><h3>Curtains &amp; blinds</h3><p>Open or close them with a tap or on a schedule.</p></article>
+          <article class="why-card"><span class="why-card__icon"><svg class="i"><use href="#i-eye"/></svg></span><h3>Cameras &amp; access</h3><p>View cameras and manage door access from the same app.</p></article>
+          <article class="why-card"><span class="why-card__icon"><svg class="i"><use href="#i-gauge"/></svg></span><h3>Energy use</h3><p>See where power is used and cut waste.</p></article>
+          <article class="why-card"><span class="why-card__icon"><svg class="i"><use href="#i-clock"/></svg></span><h3>Scenes &amp; schedules</h3><p>“Opening”, “Closing” or “All off” with one tap.</p></article>
+        </div>
+        <ul class="chips-row" data-stagger aria-label="Buildings we automate">
+          <li><svg class="i"><use href="#i-factory"/></svg>Factories</li>
+          <li><svg class="i"><use href="#i-building"/></svg>Offices</li>
+          <li><svg class="i"><use href="#i-heart"/></svg>Hospitals &amp; schools</li>
+          <li><svg class="i"><use href="#i-home"/></svg>Homes &amp; villas</li>
         </ul>
       </div>
     </section>
 
-    <!-- 6. CTA -->
+    <!-- CTA -->
     <section class="cta-wrap">
       <div class="container">
         <div class="cta" data-reveal>
           <div class="cta__rings" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
           <div class="cta__copy">
-            <h2 data-split="words">Tell us about your project</h2>
-            <p>Electrical, energy or building automation: share what you need and our team will get back to you.</p>
+            <h2 data-split="words">Ready to cut your power costs?</h2>
+            <p>Book a free site survey for solar, or tell us about the building you want to automate.</p>
             <div class="cta__actions">
-              <a href="contact.html" class="btn magnetic">Get Free Quote <svg class="i"><use href="#i-arrow-right"/></svg></a>
+              <a href="contact.html" class="btn magnetic">Book Free Site Survey <svg class="i"><use href="#i-arrow-right"/></svg></a>
               <a href="#" class="btn btn--ghost magnetic" data-whatsapp><svg class="i"><use href="#i-whatsapp"/></svg> Chat on WhatsApp</a>
             </div>
             <div class="cta__proof">
-              <div><b>1 Year</b><small>Growing rapidly, powered by trust</small></div>
+              <div><b>Authorised</b><small>Waaree solar dealer</small></div>
               <div class="avatars" aria-hidden="true"><span>RS</span><span>☀</span><span>⚡</span><span>+</span></div>
             </div>
           </div>
@@ -149,16 +168,16 @@
     <div class="container footer__grid">
       <div class="footer__brand">
         <a href="index.html" class="logo-slot"><img class="logo-img" src="assets/logo/logo.png" width="1000" height="465" alt="RS Power and Infra" /></a>
-        <p>Your trusted partner in power, engineering and infrastructure. Electrical, energy and building automation solutions for commercial, industrial and residential clients.</p>
+        <p>Authorised Waaree solar dealer for commercial, industrial and residential clients, with building automation for smarter, more efficient buildings.</p>
         <div class="footer__contact">
           <a href="tel:+910000000000"><svg class="i"><use href="#i-phone"/></svg> +91 00000 00000</a>
           <a href="mailto:info@rspowerinfra.com"><svg class="i"><use href="#i-mail"/></svg> info@rspowerinfra.com</a>
         </div>
       </div>
-      <div><h4>Electrical &amp; Energy</h4><ul><li><a href="electrical.html#solar">Solar</a></li><li><a href="electrical.html#control-panels">Control Panels</a></li></ul></div>
-      <div><h4>Building Automation</h4><ul><li><a href="building-automation.html">Overview</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="about.html#values">Our values</a></li><li><a href="about.html#why">Why RSPI</a></li><li><a href="about.html#team">Our team</a></li><li><a href="index.html#sectors">Sectors we serve</a></li></ul></div>
-      <div><h4>Support</h4><ul><li><a href="contact.html">Contact</a></li><li><a href="contact.html#faq">Solar FAQ</a></li><li><a href="electrical.html#homeowners">Home solar subsidy</a></li><li><a href="electrical.html#planner">Solar calculator</a></li></ul></div>
+      <div><h4>Solar</h4><ul><li><a href="solar.html#solar">Solar for industries</a></li><li><a href="solar.html#services">What we build</a></li><li><a href="solar.html#products">Waaree products</a></li><li><a href="solar.html#homeowners">Solar for homes</a></li></ul></div>
+      <div><h4>Building Automation</h4><ul><li><a href="building-automation.html">One-app control</a></li><li><a href="building-automation.html#control">What you can control</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="about.html#values">Our values</a></li><li><a href="about.html#team">Our team</a></li><li><a href="index.html#how">How it works</a></li></ul></div>
+      <div><h4>Support</h4><ul><li><a href="contact.html">Contact</a></li><li><a href="contact.html#faq">Solar FAQ</a></li><li><a href="contact.html">Free site survey</a></li></ul></div>
     </div>
     <div class="footer__panel">
       <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=2000&q=70" alt="" loading="lazy" />
@@ -186,6 +205,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=49"></script>
+  <script src="js/main.js?v=53"></script>
 </body>
 </html>

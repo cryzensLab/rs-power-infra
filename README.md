@@ -1,6 +1,6 @@
 # RS Power and Infra — Website
 
-A static site with five pages: `index.html` (Home), `electrical.html` (Electrical & Energy: Solar, Control Panels), `building-automation.html` (Building Automation), `about.html` and `contact.html`. It uses plain HTML, CSS and JavaScript, with no build step.
+A static site with five pages: `index.html` (Home), `solar.html` (Solar, the main service), `building-automation.html` (Building Automation, the second service), `about.html` and `contact.html`. `electrical.html` only redirects old links to `solar.html`. RSPI offers solar and building automation only. It uses plain HTML, CSS and JavaScript, with no build step.
 
 ## Run locally
 Open `index.html` in a browser, or serve the folder (recommended):
@@ -16,16 +16,15 @@ npx http-server -p 5500 -c-1
 | **WhatsApp number** | `js/main.js` → `CONFIG.whatsappNumber` (e.g. `"919876543210"`). Until it's set, WhatsApp buttons show a "coming soon" message. |
 | **Logo** | Official artwork is in `assets/logo/`: `logo.png` (header, menu, footer; sits on a white plate so it reads on dark backgrounds), `favicon.png`, and `logo-letters/bolt/dot.webp` (the three parts animated by the loading screen). To change it, replace those files, keeping the three loader parts the same size so they stack. |
 | **Hero slideshow** (3 images, 2000px wide) | `index.html` → the three `<img class="hero__slide">` tags at the top. To add or remove a slide, also add or remove a button in `.hero__dots`. |
-| **PM Surya Ghar figures** | `index.html` → `.pmsg` block, and `SUBSIDY` near the top of `js/main.js` (used by both the subsidy selector and the calculator). Check these against pmsuryaghar.gov.in before going live. |
-| **Solar content** | All solar material (Waaree products, PM Surya Ghar, solar services, planner) lives on `electrical.html`. Home only has a short solar teaser. |
+| **Subsidy figure** | The PM Surya Ghar "up to ₹78,000" line is in the "Also for homes" band on `solar.html` and in the FAQ on `contact.html`. Check it against pmsuryaghar.gov.in. |
+| **Solar content** | `solar.html`: benefits for industries, what we build, Waaree products, how it works, and a short "also for homes" band. Home gives a one-screen overview of both services. The "40% accelerated depreciation" and "3–5 year payback" claims (Home, Solar, FAQ) are typical figures; keep the footnote. |
+| **Building automation demo** | `building-automation.html` → the `.phone` mockup. Tiles are plain buttons with `data-watts`; the live count and kW are worked out in `initBADemo()` in `js/main.js`. |
 | **Product images** | Module, inverter, solar kit and energy storage use official Waaree images from waaree.com (`assets/images/products/`). |
-| **Inverter image** | `about.html` → `.inverter__media` (uses the Waaree inverter image). |
 | **Team** | `about.html` → the four `.team-card` blocks under "Our team": replace the name and role, and swap the silhouette for `<img src="assets/team/name.jpg" alt="Full name" loading="lazy" />` (photos go in `assets/team/`, about 800 × 1000px). Duplicate or delete cards as needed. |
 | **Phone, email, address** | Search all pages for `+91 00000 00000`, `info@rspowerinfra.com` and `Your office address here`. |
 | **Google Map** | `contact.html` → iframe `src`: replace `q=India&z=5` with your address. |
-| **Reviews** | `index.html` → `.quote` blocks are samples; replace them with real customer reviews. |
 | **Social links** | Footer `.socials` links (currently `#`). |
 
 The contact form has no backend yet. It validates the fields and shows a thank-you message, and once a WhatsApp number is set it also opens the enquiry in WhatsApp. To get enquiries by email, connect a service like Formspree.
 
-After editing CSS or JS on a live server, bump `?v=49` in the `<link>` and `<script>` tags so visitors get the new version.
+After editing CSS or JS on a live server, bump `?v=53` in the `<link>` and `<script>` tags so visitors get the new version.

@@ -272,6 +272,35 @@ function initSubsidy() {
   );
 }
 
+/* ---------- Building automation demo: tap tiles to switch devices ---------- */
+function initBADemo() {
+  const root = $("[data-ba-demo]");
+  if (!root) return;
+  const tiles = $$(".tile", root);
+  const count = $("[data-ba-count]", root);
+  const power = $("[data-ba-power]", root);
+  const update = () => {
+    const on = tiles.filter((t) => t.classList.contains("is-on"));
+    const kw = on.reduce((sum, t) => sum + (parseFloat(t.dataset.watts) || 0), 0) / 1000;
+    count.textContent = `${on.length} on`;
+    power.textContent = `${kw.toFixed(1)} kW`;
+  };
+  const set = (tile, state) => {
+    tile.classList.toggle("is-on", state);
+    tile.setAttribute("aria-pressed", state);
+  };
+  tiles.forEach((t) => t.addEventListener("click", () => { set(t, !t.classList.contains("is-on")); update(); }));
+  $$("[data-ba-scene]", root).forEach((b) =>
+    b.addEventListener("click", () => {
+      const work = b.dataset.baScene === "work";
+      // "Work mode": everything on except the door lock tile; "All off": everything off
+      tiles.forEach((t, k) => set(t, work && k < 5));
+      update();
+    })
+  );
+  update();
+}
+
 /* ---------- Testimonials ---------- */
 function initQuotes() {
   const quotes = $$(".quote");
@@ -598,6 +627,8 @@ function initAnimations() {
   $$("[data-stagger]").forEach((el) => {
     gsap.fromTo(el.children, { y: 50, autoAlpha: 0 }, {
       y: 0, autoAlpha: 1, duration: 1, ease: "power3.out", stagger: 0.1,
+      // drop the inline transform once revealed so CSS hover lifts still work
+      clearProps: "transform",
       scrollTrigger: { trigger: el, start: "top 85%" },
     });
   });
@@ -676,6 +707,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initProductCards();
   initHeroSlides();
   initSubsidy();
+  initBADemo();
   initQuotes();
   initServices();
   initCalculator();
