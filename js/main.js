@@ -16,6 +16,9 @@ const ICONS = {
   "arrow-right": '<path d="M5 12h14M13 6l6 6-6 6"/>',
   "arrow-left": '<path d="M19 12H5M11 6l-6 6 6 6"/>',
   "arrow-up-right": '<path d="M7 17L17 7M8 7h9v9"/>',
+  "chevron-down": '<path d="M6 9l6 6 6-6"/>',
+  droplet: '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
+  lamp: '<path d="M12 21V9M8 21h8M7 9h10l-2-5H9z"/><path d="M12 13h.01"/>',
   close: '<path d="M6 6l12 12M18 6L6 18"/>',
   phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
   mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
@@ -140,6 +143,35 @@ function initHeader() {
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+}
+
+/* ---------- Header dropdown (Solar sub-pages) ---------- */
+function initNavDrop() {
+  const drops = $$(".nav-drop");
+  if (!drops.length) return;
+  const close = (except) => drops.forEach((d) => {
+    if (d === except) return;
+    d.classList.remove("is-open");
+    $(".nav-drop__toggle", d).setAttribute("aria-expanded", "false");
+  });
+  drops.forEach((d) => {
+    const toggle = $(".nav-drop__toggle", d);
+    toggle.addEventListener("click", (e) => {
+      // with a mouse the menu opens on hover, so a click goes to the Solar page;
+      // on touch screens the first tap opens the menu instead
+      if (canHover) return;
+      e.preventDefault();
+      const open = !d.classList.contains("is-open");
+      close(d);
+      d.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+    d.addEventListener("mouseenter", () => canHover && toggle.setAttribute("aria-expanded", "true"));
+    d.addEventListener("mouseleave", () => canHover && toggle.setAttribute("aria-expanded", "false"));
+  });
+  document.addEventListener("click", (e) => { if (!e.target.closest(".nav-drop")) close(); });
+  document.addEventListener("keydown", (e) => e.key === "Escape" && close());
+  window.addEventListener("scroll", () => close(), { passive: true });
 }
 
 /* ---------- Full screen menu ---------- */
@@ -703,6 +735,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initHeader();
   initMenu();
+  initNavDrop();
   initWhatsApp();
   initProductCards();
   initHeroSlides();

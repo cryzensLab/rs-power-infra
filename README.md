@@ -1,6 +1,6 @@
 # RS Power and Infra — Website
 
-A static site with five pages: `index.html` (Home), `solar.html` (Solar, the main service), `building-automation.html` (Building Automation, the second service), `about.html` and `contact.html`. `electrical.html` only redirects old links to `solar.html`. RSPI offers solar and building automation only. It uses plain HTML, CSS and JavaScript, with no build step.
+A static site: `index.html` (Home); four solar pages under the **Solar** dropdown, `solar.html` (Corporates & Industries, the main focus), `solar-residential.html`, `solar-water-pump.html` and `solar-rural.html`; `building-automation.html` (the second service); `about.html` and `contact.html`. The Solar dropdown and the "explore other solar services" rows are the same on every page; to add or rename a solar page, update the dropdown in each page's header. `electrical.html` only redirects old links to `solar.html`. RSPI offers solar and building automation only. It uses plain HTML, CSS and JavaScript, with no build step.
 
 ## Run locally
 Open `index.html` in a browser, or serve the folder (recommended):
@@ -27,4 +27,4 @@ npx http-server -p 5500 -c-1
 
 The contact form has no backend yet. It validates the fields and shows a thank-you message, and once a WhatsApp number is set it also opens the enquiry in WhatsApp. To get enquiries by email, connect a service like Formspree.
 
-After editing CSS or JS on a live server, bump `?v=53` in the `<link>` and `<script>` tags so visitors get the new version.
+After editing CSS or JS on a live server, bump `?v=55` in the `<link>` and `<script>` tags so visitors get the new version.

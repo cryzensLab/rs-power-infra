@@ -1637,3 +1637,66 @@ section[id] { scroll-margin-top: 72px; }
   .build-card__body, .build-card--feature .build-card__body { padding: 20px; }
 }
 .build-card--wide img { object-position: center 80%; }
+
+/* ---------- Header dropdown: Solar sub-pages ---------- */
+.header__inner { position: relative; }
+.nav-drop { position: relative; }
+.header__nav .nav-drop__toggle { display: inline-flex; align-items: center; gap: 4px; }
+.nav-drop__toggle .i { width: 16px; height: 16px; transition: transform 0.35s var(--ease); }
+.nav-drop:hover .nav-drop__toggle .i, .nav-drop.is-open .nav-drop__toggle .i { transform: rotate(180deg); }
+.nav-drop__toggle.is-current { color: #fff; }
+.nav-drop__toggle.is-current::after { transform: scaleX(1); }
+.nav-drop__menu {
+  position: absolute; top: calc(100% + 16px); left: 50%; z-index: 20; width: 340px;
+  display: grid; gap: 4px; padding: 10px; border-radius: 20px; background: #fff;
+  box-shadow: 0 30px 60px -20px rgba(7, 17, 24, 0.45), 0 0 0 1px rgba(15, 34, 48, 0.06);
+  opacity: 0; visibility: hidden; transform: translate(-50%, 10px);
+  transition: opacity 0.3s var(--ease), transform 0.35s var(--ease), visibility 0s linear 0.35s;
+}
+/* invisible bridge so the menu stays open while the mouse moves down to it */
+.nav-drop__menu::before { content: ""; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
+.nav-drop:hover .nav-drop__menu, .nav-drop:focus-within .nav-drop__menu, .nav-drop.is-open .nav-drop__menu {
+  opacity: 1; visibility: visible; transform: translate(-50%, 0); transition-delay: 0s;
+}
+.header__nav .nav-drop__menu a {
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 14px;
+  color: var(--ink); white-space: normal; font-size: 0.92rem; transition: background 0.25s;
+}
+.header__nav .nav-drop__menu a::after { display: none; }
+.header__nav .nav-drop__menu a:hover, .header__nav .nav-drop__menu a[aria-current="page"] { background: var(--bg-soft); color: var(--ink); }
+.nav-drop__menu .nav-drop__icon { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; background: var(--bg-soft); color: var(--teal); transition: background 0.25s, color 0.25s; }
+.nav-drop__menu a:hover .nav-drop__icon, .nav-drop__menu a[aria-current="page"] .nav-drop__icon { background: var(--green); color: #fff; }
+.nav-drop__menu b { display: block; font-weight: 600; line-height: 1.25; }
+.nav-drop__menu small { display: block; font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .nav-drop__menu { transition-duration: 0.3s, 0.35s, 0s !important; }
+}
+/* small screens: the nav row scrolls sideways, so the menu hangs from the whole header instead */
+@media (max-width: 960px) {
+  .nav-drop { position: static; }
+  .nav-drop__menu { top: calc(100% + 8px); left: var(--gutter); right: var(--gutter); width: auto; transform: translateY(10px); }
+  .nav-drop:hover .nav-drop__menu { opacity: 0; visibility: hidden; transform: translateY(10px); }
+  .nav-drop.is-open .nav-drop__menu, .nav-drop:focus-within .nav-drop__menu { opacity: 1; visibility: visible; transform: none; }
+}
+
+/* ---------- Solar sub-pages ---------- */
+.sub-strip { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin-inline: auto; }
+.sub-strip li { padding: 26px 22px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); text-align: center; }
+.sub-strip li.is-top { background: linear-gradient(140deg, var(--teal), var(--navy)); color: #fff; border-color: transparent; }
+.sub-strip span { display: block; font-size: 0.85rem; color: var(--muted); }
+.sub-strip li.is-top span { color: rgba(255, 255, 255, 0.75); }
+.sub-strip b { display: block; margin-top: 6px; font-family: var(--font-head); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 500; color: var(--green-dark); }
+.sub-strip li.is-top b { color: var(--sun); }
+
+.sol-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.sol-link {
+  display: flex; align-items: center; gap: 16px; padding: 20px; border-radius: 20px; background: var(--bg-soft);
+  transition: background 0.3s, transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.sol-link:hover { background: #fff; transform: translateY(-4px); box-shadow: var(--shadow); }
+.sol-link__icon { display: grid; place-items: center; flex-shrink: 0; width: 48px; height: 48px; border-radius: 14px; background: var(--teal); color: #fff; }
+.sol-link b { display: block; font-weight: 600; }
+.sol-link small { color: var(--muted); font-size: 0.85rem; }
+.sol-link > .i { margin-left: auto; color: var(--green); transition: transform 0.4s var(--ease); }
+.sol-link:hover > .i { transform: translateX(4px); }
+@media (max-width: 960px) { .sol-links, .sub-strip { grid-template-columns: 1fr; } }
